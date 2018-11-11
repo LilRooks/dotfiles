@@ -1,6 +1,51 @@
 "First!
 set nocompatible
 
+" --- General Settings ---
+nnoremap H 0
+nnoremap L $
+nnoremap J G
+nnoremap K gg
+
+map <tab> %
+set backspace=indent,eol,start
+
+set ruler
+set number
+set relativenumber
+set showcmd
+set incsearch
+set hlsearch
+set spelllang=en_US
+set tabstop=4
+set shiftwidth=4
+set softtabstop=0 expandtab shiftwidth=4 smarttab
+
+syntax on
+
+set mouse=a
+
+"Need this for plugins like Syntastic and vim-gitgutter
+" which put symbols in the sign column
+hi clear SignColumn
+
+" Toggle functions
+set pastetoggle=<F2>
+map <F3> :setlocal spell!<CR>
+
+" General
+inoremap <leader>for <esc>Ifor (int i = 0; i < <esc>A; i++) {<enter>}<esc>O<tab>
+inoremap <leader>if <esc>Iif (<esc>A) {<enter>}<esc>O<tab>
+
+" Java
+inoremap <leader>sys <esc>ISystem.out.println(<esc>A);
+vnoremap <leader>sys yOSystem.out.println(<esc>pA);
+
+" Javascript
+inoremap <leader>con <esc>Iconsole.log(<esc>A);
+vnoremap <leader>con yOconsole.log(<esc>pA);
+set listchars=tab:\|\ 
+
 " --- Vundle Bundle ---
 filetype off
 
@@ -29,6 +74,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'itchyny/vim-haskell-indent'
 Plugin 'matchit.zip'
+Plugin 'yggdroot/indentline'
 " --- Git Sh!t ---
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
@@ -36,27 +82,6 @@ Plugin 'tpope/vim-fugitive'
 call vundle#end()
 
 filetype plugin indent on
-
-" --- General Settings ---
-
-set backspace=indent,eol,start
-
-set ruler
-set number
-set relativenumber
-set showcmd
-set incsearch
-set hlsearch
-set spelllang=en_US
-set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
-
-syntax on
-
-set mouse=a
-
-"Need this for plugins like Syntastic and vim-gitgutter
-" which put symbols in the sign column
-hi clear SignColumn
 
 " --- Plugin-Specific Settings ---
 
@@ -145,6 +170,3 @@ augroup END
 
 " --- plasticboy/vim-markdown ---
 let g:vim_markdown_folding_disabled = 1
-
-set pastetoggle=<F2>
-map <F3> :setlocal spell!<CR>

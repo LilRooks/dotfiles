@@ -48,5 +48,6 @@ sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/to
 echo
 
 # 4. Synchronizes other dotfiles
+git clone https://github.com/gmarik/Vundle.vim ~/.vim/bundle/Vundle.vim
 rsync -av home/ ~/
 vim +PluginInstall +qall
