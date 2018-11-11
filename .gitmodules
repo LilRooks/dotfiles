@@ -1,0 +1,9 @@
+[submodule "home/.oh-my-zsh/custom/plugins/zsh-autosuggestions"]
+	path = home/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "home/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
+	path = home/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "home/.oh-my-zsh/custom/themes/powerlevel9k"]
+	path = home/.oh-my-zsh/custom/themes/powerlevel9k
+	url = https://github.com/bhilburn/powerlevel9k.git

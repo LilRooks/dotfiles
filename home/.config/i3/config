@@ -1,0 +1,226 @@
+# Constants
+  set $mod Mod4
+
+  set $left h
+  set $down j
+  set $up k
+  set $right l
+
+  set $base00 #101218
+  set $base01 #1f222d
+  set $base02 #252936
+  set $base03 #7780a1
+  set $base04 #C0C5CE
+  set $base05 #d1d4e0
+  set $base06 #C9CCDB
+  set $base07 #ffffff
+  set $base08 #ee829f
+  set $base09 #f99170
+  set $base0A #ffefcc
+  set $base0B #a5ffe1
+  set $base0C #97e0ff
+  set $base0D #97bbf7
+  set $base0E #c0b7f9
+  set $base0F #fcc09e
+
+  set $ws1 "1: "
+  set $ws2 "2: "
+  set $ws3 "3: "
+  set $ws4 "4: "
+  set $ws5 "5: "
+  set $ws6 "6: "
+  set $ws7 "7: "
+  set $ws8 "8: "
+  set $ws9 "9: "
+  set $ws10 "10: "
+
+  set $term urxvt
+  set $i3conf ~/.config/i3/
+  set $menu $i3conf/dmenu_run_history
+  set $lockcmd     $i3conf/lock.sh
+
+# General Configuration
+  font pango: Noto 10
+  gaps inner 2
+  gaps outer 1
+  floating_modifier $mod
+  hide_edge_borders both
+  default_border none
+  workspace_layout tabbed
+
+# Window-Related Bindings
+  bindsym $mod+a focus parent
+
+  bindsym $mod+e layout toggle split
+  bindsym $mod+w layout tabbed
+
+  bindsym $mod+$left focus left
+  bindsym $mod+$down focus down
+  bindsym $mod+$up focus up
+  bindsym $mod+$right focus right
+
+  bindsym $mod+Left focus left
+  bindsym $mod+Down focus down
+  bindsym $mod+Up focus up
+  bindsym $mod+Right focus right
+
+  bindsym $mod+Shift+$left move left
+  bindsym $mod+Shift+$down move down
+  bindsym $mod+Shift+$up move up
+  bindsym $mod+Shift+$right move right
+
+  bindsym $mod+Shift+Left move left
+  bindsym $mod+Shift+Down move down
+  bindsym $mod+Shift+Up move up
+  bindsym $mod+Shift+Right move right
+
+  bindsym $mod+Shift+q kill
+  bindsym $mod+Shift+space floating toggle
+  bindsym $mod+f fullscreen toggle
+
+  bindsym $mod+b splith
+  bindsym $mod+v splitv
+  bindsym $mod+space focus mode_toggle
+  bindsym $mod+r mode "  "
+
+  bindsym $mod+Shift+minus move scratchpad
+  bindsym $mod+minus scratchpad show
+
+  # enable Alt+Tab Functionality
+  bindsym $mod+Tab workspace next
+  bindsym $mod+Shift+Tab workspace prev
+
+  # Resize Window mode
+  mode "  " {
+    bindsym $left resize shrink width 10 px or 10 ppt
+    bindsym $down resize grow height 10 px or 10 ppt
+    bindsym $right resize grow width 10 px or 10 ppt
+    bindsym $up resize shrink height 10 px or 10 ppt
+    # Arrow Key Equivalents
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    # Exit
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+  }
+
+# Restart-Related Bindings
+  bindsym $mod+Shift+c reload
+  bindsym $mod+Shift+r restart
+
+  # Powering System mode
+  set $mode_system System [l]ock, [E]xit, [R]eboot, [S]hutdown
+  mode "$mode_system" {
+      bindsym l exec "$lockcmd", mode "default"
+      bindsym Shift+r exec sudo shutdown -r now
+      bindsym Shift+s exec sudo shutdown -h now
+      bindsym Shift+e exit
+#     bindsym s exec "$lockcmd && systemctl suspend", mode "default"
+#     bindsym h exec "$lockcmd && systemctl hibernate", mode "default"
+
+      # back to normal: Enter or Escape
+      bindsym Return mode "default"
+      bindsym Escape mode "default"
+  }
+  bindsym $mod+Escape mode "$mode_system"
+
+# Program-Related Bindings
+  bindsym $mod+Shift+f exec firefox
+  bindsym $mod+Shift+p exec firefox -P PrivatePlus
+  bindsym $mod+Return exec $term
+  bindsym $mod+d exec $menu
+
+# Screenshoot-Related Bindings
+  bindsym --release Print exec xfce4-screenshooter -f
+  bindsym --release $mod+Print exec xfce4-screenshooter -w
+  bindsym --release Shift+Print exec xfce4-screenshooter -r
+  bindsym --release Control+Print exec $i3conf/screencast
+  bindsym --release Control+$mod+Print exec $i3conf/screencast nomouse
+  bindsym --release Control+Shift+Print exec killall ffmpeg
+
+# XF86 and Similar Key Bindings
+  bindsym XF86AudioLowerVolume exec "pactl set-sink-mute 0 0 && pactl set-sink-volume 0 -5%"
+  bindsym XF86AudioRaiseVolume exec "pactl set-sink-mute 0 0 && pactl set-sink-volume 0 +5%"
+  bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+  bindsym XF86AudioMicMute exec amixer set Capture toggle
+  bindsym XF86MonBrightnessUp exec sudo xbacklight +1
+  bindsym XF86MonBrightnessDown exec sudo xbacklight -1
+
+# Workspace-Related Bindings
+  bindsym $mod+1 workspace $ws1
+  bindsym $mod+2 workspace $ws2
+  bindsym $mod+3 workspace $ws3
+  bindsym $mod+4 workspace $ws4
+  bindsym $mod+5 workspace $ws5
+  bindsym $mod+6 workspace $ws6
+  bindsym $mod+7 workspace $ws7
+  bindsym $mod+8 workspace $ws8
+  bindsym $mod+9 workspace $ws9
+  bindsym $mod+0 workspace $ws10
+
+  bindsym $mod+Shift+1 move container to workspace $ws1
+  bindsym $mod+Shift+2 move container to workspace $ws2
+  bindsym $mod+Shift+3 move container to workspace $ws3
+  bindsym $mod+Shift+4 move container to workspace $ws4
+  bindsym $mod+Shift+5 move container to workspace $ws5
+  bindsym $mod+Shift+6 move container to workspace $ws6
+  bindsym $mod+Shift+7 move container to workspace $ws7
+  bindsym $mod+Shift+8 move container to workspace $ws8
+  bindsym $mod+Shift+9 move container to workspace $ws9
+  bindsym $mod+Shift+0 move container to workspace $ws10
+
+# Program Workspaces
+  assign [class="Firefox"] $ws1
+  assign [class="Thunderbird"] $ws1
+  assign [class="jetbrains-idea"] $ws3
+  assign [class="Gimp"] $ws4
+  assign [class="Steam"] $ws5
+  assign [class="Thunar"] $ws8
+  assign [class="Telegram"] $ws9
+  assign [class="discord"] $ws9
+
+# Floating
+  for_window [class="Lxappearance"] floating enable
+  for_window [class="bashrun"] floating enable
+
+# Window Colours
+#                         border  background text    indicator
+  client.focused          $base01 $base01    $base07 $base0F
+  client.focused_inactive $base02 $base02    $base03 $base0F
+  client.unfocused        $base02 $base02    $base03 $base0F
+  client.urgent           $base02 $base08    $base00 $base0F
+
+  bar {
+    id bar-main
+    font pango: Noto, FontAwesome 10
+    status_command while date; do sleep 1; done
+    position top
+    # strip_workspace_numbers yes
+    colors {
+      separator $base03
+      background $base01
+      statusline $base05
+      #                  border  background text
+      focused_workspace  $base01 $base01    $base07
+      active_workspace   $base01 $base02    $base03
+      inactive_workspace $base01 $base01    $base03
+      urgent_workspace   $base01 $base01    $base08
+    }
+  }
+
+exec --no-startup-id feh --bg-scale $i3conf/Sway_Wallpaper_Blue_1920x1080.png
+exec --no-startup-id redshift-gtk
+exec --no-startup-id compton -f -D 5
+#xec i3-msg 'workspace $ws2; exec xfce4-terminal; exec xfce4-terminal'
+#xec i3-msg 'workspace $ws5; exec xfce4-terminal'
+exec --no-startup-id xfce4-clipman
+exec --no-startup-id nm-applet
+exec telegram-desktop
+exec thunderbird
+exec firefox
+exec discord
+exec thunar
+#xec gimp
+

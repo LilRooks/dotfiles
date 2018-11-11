@@ -1,0 +1,7 @@
+[user]
+	name = Anna Rooks
+	email = a.Git@ironflurry.com
+[color]
+	ui = auto
+[core]
+	excludesfile = ~/.gitignore_global
