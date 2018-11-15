@@ -35,9 +35,8 @@
   set $ws10 "10: "
 
   set $term urxvt
-  set $i3conf ~/.config/i3/
-  set $menu $i3conf/dmenu_run_history
-  set $lockcmd     $i3conf/lock.sh
+  set $menu ~/.config/i3/dmenu_run_history
+  set $lockcmd ~/.config/i3/lock.sh
 
 # General Configuration
   font pango: Noto 10

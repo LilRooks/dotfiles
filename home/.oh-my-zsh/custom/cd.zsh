@@ -1,6 +1,6 @@
-# Custom cd
-     c() {
-         cd $1;
-         ls;
-     }
-alias cd="c"
+# ls -a on chpwd
+function chpwd() {
+    emulate -L zsh
+    ls
+}
+

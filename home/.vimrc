@@ -19,7 +19,7 @@ set hlsearch
 set spelllang=en_US
 set tabstop=4
 set shiftwidth=4
-set softtabstop=0 expandtab shiftwidth=4 smarttab
+set softtabstop=0 expandtab smarttab
 
 syntax on
 
@@ -154,7 +154,6 @@ nmap <silent> <leader>b :TagbarToggle<CR>
 
 
 " --- airblade/vim-gitgutter settings ---
-" In vim-airline, only display "hunks" if the diff is non-zero
 let g:airline#extensions#hunks#non_zero_only = 1
 
 
@@ -170,3 +169,4 @@ augroup END
 
 " --- plasticboy/vim-markdown ---
 let g:vim_markdown_folding_disabled = 1
+let g:polyglot_disabled = ['latex']
