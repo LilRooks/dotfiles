@@ -110,8 +110,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # Powering System mode
-set $mode_system System [l]ock, [E]xit, [R]eboot, [S]hutdown
-mode "$mode_system" {
+set $mode_system "System [l]ock, [E]xit, [R]eboot, [S]hutdown"
+mode $mode_system {
     bindsym l exec "$lockcmd"; mode "default"
     bindsym Shift+r exec "sudo shutdown -r now"
     bindsym Shift+s exec "sudo shutdown -h now"
@@ -123,23 +123,23 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+Escape mode "$mode_system"
+bindsym $mod+Escape mode $mode_system
 
 # Program-Related Bindings
 set $mode_toolset "[F]irefox, [T]hunderbird, [D]iscord, [t]elegram, [A]ll"
 mode $mode_toolset {
-    bindsym Shift+f exec "GTK_THEME=Arc firefox"
-    bindsym Shift+p exec "GTK_THEME=Arc firefox -P PrivatePlus"
-    bindsym Shift+t exec "thunderbird"
-    bindsym Shift+d exec "discord"
-    bindsym t       exec "telegram-desktop"
+    bindsym Shift+f exec "GTK_THEME=Arc firefox"; mode "default"
+    bindsym Shift+p exec "GTK_THEME=Arc firefox -P PrivatePlus"; mode "default"
+    bindsym Shift+t exec "thunderbird"; mode "default"
+    bindsym Shift+d exec "discord"; mode "default"
+    bindsym t       exec "telegram-desktop"; mode "default"
 
-    bindsym Shift+a exec "firefox"; exec "thunderbird"; exec "discord"; exec "telegram-desktop"
+    bindsym Shift+a exec "firefox"; exec "thunderbird"; exec "discord"; exec "telegram-desktop"; mode "default"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+Shift+a mode "$mode_toolset"
+bindsym $mod+Shift+a mode $mode_toolset
 
 bindsym $mod+Return exec "$term"
 bindsym $mod+d exec "$menu"
