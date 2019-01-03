@@ -35,6 +35,7 @@ set $ws9 "9: "
 set $ws10 "10: "
 
 set $term urxvt
+set $i3conf ~/.config/i3
 set $menu ~/.config/i3/dmenu_run_history
 set $lockcmd ~/.config/i3/lock.sh
 
@@ -134,7 +135,7 @@ mode $mode_toolset {
     bindsym Shift+d exec "discord"; mode "default"
     bindsym t       exec "telegram-desktop"; mode "default"
 
-    bindsym Shift+a exec "firefox"; exec "thunderbird"; exec "discord"; exec "telegram-desktop"; mode "default"
+    bindsym Shift+a exec "GTK_THEME=Arc firefox"; exec "thunderbird"; exec "discord"; exec "telegram-desktop"; mode "default"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -225,7 +226,7 @@ bar {
     }
 }
 
-exec --no-startup-id feh --bg-scale "$i3conf/background.jpg"
+exec --no-startup-id feh --bg-scale "~/Pictures/background.jpg"
 exec --no-startup-id "compton -f -D 5"
 exec --no-startup-id "xfce4-clipman"
 exec --no-startup-id "redshift-gtk"
