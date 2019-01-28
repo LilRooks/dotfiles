@@ -35,7 +35,7 @@ set $ws9 "9: "
 set $ws10 "10: "
 
 set $term urxvt
-set $home /home/hachispun
+set $home /home/tet
 set $i3conf ~/.config/i3
 set $menu ~/.config/i3/dmenu_run_history
 set $lockcmd ~/.config/i3/lock.sh
