@@ -2,9 +2,13 @@
 
 xset b off
 xset -dpms
-xset noblank
+xset s noblank
 xset s off
 xinput --disable 'AlpsPS/2 ALPS DualPoint TouchPad'
-setxkbmap -variant mac -option 'caps:escape,shift:both_capslock_cancel,compose:rctrl'
+setxkbmap -variant mac -option 'caps:swapescape,compose:rctrl'
+
+dbus-update-activation-environment --systemd DISPLAY
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
 
 exec i3

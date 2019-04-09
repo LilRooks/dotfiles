@@ -64,6 +64,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  ssh-agent
   zsh-autosuggestions
   vi-mode
   #MUST BE LAST
