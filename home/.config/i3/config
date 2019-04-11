@@ -192,6 +192,7 @@ assign [class="jetbrains-idea"] $ws3
 assign [class="Gimp"] $ws4
 assign [class="Steam"] $ws5
 assign [class="Thunar"] $ws8
+assign [class="mpv"] $ws8
 assign [class="Telegram"] $ws9
 assign [class="discord"] $ws9
 

@@ -1,0 +1,10 @@
+plugins: inline convert web lastgenre replaygain discogs bpd embedart duplicates missing play
+
+play:
+  command: mpv $args
+
+lastgenre:
+  source: track
+
+replaygain:
+  backend: gstreamer
