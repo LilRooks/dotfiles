@@ -8,3 +8,4 @@ lastgenre:
 
 replaygain:
   backend: gstreamer
+  targetlevel: 70
