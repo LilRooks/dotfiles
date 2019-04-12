@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+mv ~/.config/genkernel/current ~/.config/genkernel/$(uname -r)
+cp /usr/src/linux-$(uname -r)/.config ~/.config/genkernel/current
+sudo genkernel all --menuconfig --kernel-config=~/.config/genkernel/current
