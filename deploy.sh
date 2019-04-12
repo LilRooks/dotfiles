@@ -49,10 +49,6 @@ echo
 
 # 4. Synchronizes other dotfiles
 git clone https://github.com/gmarik/Vundle.vim ~/.vim/bundle/Vundle.vim
-if hash unison 2>/dev/null; then
-    unison home/ ~/
-else
-    rsync -aPubz home/ ~/
-fi
+rsync -aPubz home/ ~/
 
 vim +PluginInstall +qall

@@ -1,0 +1,6 @@
+#!/bin/sh
+ARGDOWNLOAD=~/Downloads/$(echo $1 | sed -pe 's/^.*?//')
+rsync -aPubz -e ssh $1 $ARGDOWNLOAD
+unison $ARGDOWNLOAD $2
+rsync -aPubz -e ssh $ARGDOWNLOAD $1
+
