@@ -75,6 +75,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'itchyny/vim-haskell-indent'
 Plugin 'matchit.zip'
 Plugin 'yggdroot/indentline'
+Plugin 'ajh17/vimcompletesme'
 " --- Git Sh!t ---
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
