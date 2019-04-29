@@ -1,6 +1,6 @@
 #!/bin/sh
-ARGDOWNLOAD=~/Downloads/$(echo $1 | sed -pe 's/^.*?//')
-rsync -aPubz -e ssh $1 $ARGDOWNLOAD
+ARGDOWNLOAD=~/Downloads/$(echo $1 | sed -E 's/^.*?://')
+echo $ARGDOWNLOAD
+rsync -aPubz -e ssh $1 $ARGDOWNLOAD --delete
 unison $ARGDOWNLOAD $2
 rsync -aPubz -e ssh $ARGDOWNLOAD $1
-
