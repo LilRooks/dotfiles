@@ -34,8 +34,8 @@ set pastetoggle=<F2>
 map <F3> :setlocal spell!<CR>
 
 " General
-inoremap <leader>for <esc>Ifor (int i = 0; i < <esc>A; i++) {<enter>}<esc>O<tab>
-inoremap <leader>if <esc>Iif (<esc>A) {<enter>}<esc>O<tab>
+inoremap <leader>for <esc>Ifor (int i = 0; i < <esc>A; i++) 
+inoremap <leader>if <esc>Iif (<esc>A) 
 
 " Java
 inoremap <leader>sys <esc>ISystem.out.println(<esc>A);
