@@ -4,6 +4,6 @@
 [submodule "home/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
 	path = home/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule "home/.oh-my-zsh/custom/themes/powerlevel9k"]
-	path = home/.oh-my-zsh/custom/themes/powerlevel9k
-	url = https://github.com/bhilburn/powerlevel9k.git
+[submodule "home/.oh-my-zsh/custom/themes/powerlevel10k"]
+	path = home/.oh-my-zsh/custom/themes/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git
