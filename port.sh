@@ -1,7 +1,7 @@
 trash ~/.gitconfig
 trash ~/.gitignore_global
-trash ~/.oh-my-zsh/custom/themes/
-trash ~/.oh-my-zsh/custom/plugins/
+trash ~/.oh-my-zsh/custom
+trash ~/.oh-my-zsh/completions
 trash ~/.purepower
 trash ~/.scripts
 trash ~/.ssh/config
