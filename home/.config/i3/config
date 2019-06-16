@@ -228,7 +228,7 @@ bar {
     }
 }
 
-exec --no-startup-id feh --bg-scale "$home/Pictures/background.jpg"
+exec --no-startup-id feh --bg-scale "$home/.config/i3/background.jpg"
 exec --no-startup-id "compton -f -D 5"
 exec --no-startup-id "xfce4-clipman"
 exec --no-startup-id "redshift-gtk"

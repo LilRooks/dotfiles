@@ -49,6 +49,11 @@ echo
 
 # 4. Synchronizes other dotfiles
 git clone https://github.com/gmarik/Vundle.vim ~/.vim/bundle/Vundle.vim
-rsync -aPubz home/ ~/
+
+ln -sv $PWD/home/.* ~/
+ln -sv $PWD/home/.config/* ~/.config/
+ln -sv $PWD/home/.ssh/* ~/.ssh/
+ln -sv $PWD/home/.oh-my-zsh/* ~/.oh-my-zsh/
+#rsync -aPubz home/ ~/
 
 vim +PluginInstall +qall
