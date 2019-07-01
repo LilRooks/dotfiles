@@ -7,7 +7,7 @@ xset s off
 xinput --disable 'AlpsPS/2 ALPS DualPoint TouchPad'
 setxkbmap -variant mac -option 'caps:swapescape,compose:rctrl'
 
-udiskie --tray
+udiskie --tray &
 
 dbus-update-activation-environment --systemd DISPLAY
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
