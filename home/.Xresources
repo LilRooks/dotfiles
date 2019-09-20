@@ -61,7 +61,7 @@ URxvt.font: xft:DroidSansMonoForPowerline:size=10, \
             xft:DejaVuSansMono:size=10
 URxvt.letterSpace: 0
 
-URxvt.perl-ext-common: bell-command,matcher
+URxvt.perl-ext-common: bell-command,matcher,font-size
 URxvt.bell-command: aplay $HOME/.config/glass.wav
 URxvt.urgentOnBell: true
 URxvt.url-launcher: /usr/bin/xdg-open

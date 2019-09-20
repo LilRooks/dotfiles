@@ -1,13 +1,21 @@
 #!/bin/bash
 TMPFILE="$(mktemp -t screencast-XXXXXXX).mkv"
 OUTPUT="$HOME/Pictures/Screencasts/$(date +%F-%H-%M-%S)"
+trap "rm -f '$TMPFILE'" EXIT
 
 read -r X Y W H G ID < <(slop -f "%x %y %w %h %g %i")
-if [ $# -gt 0 ]; then
-    ffmpeg -f x11grab -draw_mouse 0 -s "$W"x"$H" -i :0.0+$X,$Y "$TMPFILE"
-else
-    ffmpeg -f x11grab -s "$W"x"$H" -i :0.0+$X,$Y "$TMPFILE"
-fi
+while getopts "n" ARGX; do
+    case "$ARGX" in 
+        n) NOMOUSE=1 ;;
+    esac
+done
+
+ffmpeg -f x11grab ${NOMOUSE:+'-draw_mouse 0'} -s "$W"x"$H" -i :0.0+$X,$Y "$TMPFILE"
+#if [ $# -gt 0 ]; then
+#    ffmpeg -f x11grab -draw_mouse 0 -s "$W"x"$H" -i :0.0+$X,$Y "$TMPFILE"
+#else
+#    ffmpeg -f x11grab -s "$W"x"$H" -i :0.0+$X,$Y "$TMPFILE"
+#fi
 
 notify-send 'generating palette'
 ffmpeg -y -i "$TMPFILE"  -vf fps=10,palettegen /tmp/palette.png
@@ -16,5 +24,3 @@ ffmpeg -i "$TMPFILE" -i /tmp/palette.png -filter_complex "paletteuse" $OUTPUT.gi
 mv $TMPFILE $OUTPUT.mkv
 
 notify-send "size $(du -h $OUTPUT.gif | awk '{print $1}')"
-
-trap "rm -f '$TMPFILE'" 0
