@@ -42,8 +42,8 @@ set $lockcmd ~/.config/i3/lock.sh
 
 # General Configuration
 font pango: Noto 10
-gaps inner 2
-gaps outer 1
+gaps inner 10
+gaps outer 0
 floating_modifier $mod
 hide_edge_borders both
 default_border none

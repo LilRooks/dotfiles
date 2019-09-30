@@ -55,6 +55,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " --- Make Vim look good ---
+Plugin 'tomasr/molokai'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'vim-airline/vim-airline'
@@ -88,11 +89,11 @@ filetype plugin indent on
 
 " --- altercation/vim-colors-solarized settings ---
 " Toggle this to "light" for light colorscheme
-set background=dark
+"set background=dark
 " Uncomment the next line if terminal is not configured for solarized
 "let g:solarized_termcolors=256
 " Set the colorscheme
-colorscheme solarized
+colorscheme molokai
 
 
 " --- bling/vim-airline settings ---
@@ -106,7 +107,7 @@ let g:airline_detect_paste=1
 " Show airline for tabs too
 let g:airline#extensions#tabline#enabled = 1
 " Use the solarized theme for the Airline status bar
-let g:airline_theme='solarized'
+let g:airline_theme='molokai'
 
 
 " --- edkolev/tmuxline.vim settings ---
