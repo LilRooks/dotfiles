@@ -204,7 +204,7 @@ for_window [class="Lxappearance"] floating enable
 for_window [class="bashrun"] floating enable
 
 # Window Colours
-#                         border  background text    indicator
+#                       border  background text    indicator
 client.focused          $base01 $base01    $base07 $base0F
 client.focused_inactive $base02 $base02    $base03 $base0F
 client.unfocused        $base02 $base02    $base03 $base0F

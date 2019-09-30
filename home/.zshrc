@@ -106,3 +106,5 @@ export EDITOR=vim
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 compinit
 source ~/.purepower
+export WORKON_HOME=~/Envs
+source /usr/bin/virtualenvwrapper.sh

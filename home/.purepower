@@ -165,7 +165,7 @@ fi
   fi
 
   typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-      context dir vcs)
+      virtualenv context dir vcs)
 
   typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
       status background_jobs custom_rprompt battery)
