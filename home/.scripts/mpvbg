@@ -1,0 +1,6 @@
+#!/usr/bin/env python3
+import os,random
+wpDir = os.path.expanduser('~') + "/.wallpapers"
+bg = random.choice(os.listdir(wpDir))
+cmd = 'xwinwrap -g 1920x1080 -ov -- mpv --wid WID %s/%s --loop --no-osc' % (wpDir,bg)
+os.system(cmd)

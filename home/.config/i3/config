@@ -47,7 +47,6 @@ gaps outer 0
 floating_modifier $mod
 hide_edge_borders both
 default_border none
-workspace_layout tabbed
 
 # Window-Related Bindings
 bindsym $mod+a focus parent
@@ -229,7 +228,8 @@ bar {
     tray_output primary
 }
 
-exec --no-startup-id feh --bg-scale "$home/.config/i3/background.png"
+# exec --no-startup-id feh --bg-scale "$home/.config/i3/background.png"
+exec --no-startup-id "$home/.scripts/mpvbg"
 exec --no-startup-id "compton -f -D 5"
 exec --no-startup-id "xfce4-clipman"
 exec --no-startup-id "redshift-gtk"
