@@ -185,7 +185,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Program Workspaces
-assign [class="Firefox"] $ws1
+assign [class="firefox"] $ws1
 assign [class="Thunderbird"] $ws1
 assign [class="jetbrains-idea"] $ws3
 assign [class="Gimp"] $ws4
