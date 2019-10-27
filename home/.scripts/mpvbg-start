@@ -8,5 +8,6 @@ while pgrep -u $UID -x xwinwrap >/dev/null; do sleep 1; done
 
 # Launch bar1 and bar2
 ~/.scripts/mpvbg &
+~/.scripts/mpvbg second &
 
 echo "Background launched..."

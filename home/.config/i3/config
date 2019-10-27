@@ -185,15 +185,15 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Program Workspaces
-assign [class="firefox"] $ws1
-assign [class="Thunderbird"] $ws1
-assign [class="jetbrains-idea"] $ws3
-assign [class="Gimp"] $ws4
+assign [class="Telegram"] $ws1
+assign [class="discord"] $ws1
+assign [class="firefox"] $ws2
+assign [class="jetbrains-idea"] $ws4
 assign [class="Steam"] $ws5
+assign [class="Gimp"] $ws7
 assign [class="Thunar"] $ws8
 assign [class="mpv"] $ws8
-assign [class="Telegram"] $ws9
-assign [class="discord"] $ws9
+assign [class="Thunderbird"] $ws9
 
 assign [instance="ws2"] $ws2
 assign [instance="ws5"] $ws5
@@ -235,6 +235,7 @@ exec --no-startup-id "compton -f -D 5"
 exec --no-startup-id "xfce4-clipman"
 exec --no-startup-id "redshift-gtk"
 exec --no-startup-id "nm-applet"
-exec "$term -name 'ws2'"
-exec "$term -name 'ws2'"
+exec --no-startup-id "dunst"
+exec "$term -name 'ws3'"
+exec "$term -name 'ws3'"
 exec "$term -name 'ws5'"
