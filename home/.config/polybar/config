@@ -36,6 +36,7 @@ date = #c7ceea
 
 [bar/top]
 monitor = ${env:MONITOR:}
+wm-restack = bspwm
 width = 100%
 height = 30
 radius = 6.0
@@ -65,7 +66,7 @@ font-1 = DejaVuSans:size=10;2
 font-2 = FontAwesome5Free:style=Solid:size=10;2
 font-3 = FontAwesome5Free:style=Regular:size=10;2
 
-modules-left = i3
+modules-left = i3 bspwm
 modules-center = xwindow
 modules-right = temperature cpu memory volume xbacklight eth wlan battery date
 
@@ -77,6 +78,7 @@ cursor-scroll = ns-resize
 
 [module/i3]
 type = internal/i3
+index-sort = true
 
 ws-icon-0 = 1;
 ws-icon-1 = 2;
@@ -111,6 +113,39 @@ label-urgent-background = ${colors.alert}
 label-visible = %icon%
 label-visible-padding = 2
 label-visible-margin = 1
+
+[module/bspwm]
+type = internal/bspwm
+
+format = <label-state> <label-mode>
+
+label-active = %index%
+label-active-padding = 2
+label-active-margin = 1
+label-active-font = 3
+label-active-foreground = #fff
+label-active-background = #2fbbf2
+label-active-overline = #148ebe
+label-active-underline = #148ebe
+
+label-occupied = %index%
+label-occupied-padding = 2
+label-occupied-margin = 1
+label-occupied-background = #eeeeee
+label-occupied-foreground = #dd222222
+label-occupied-overline = #c5c5c5
+label-occupied-underline = #c5c5c5
+label-occupied-font = 3
+
+label-urgent = %index%
+label-urgent-padding = 2
+label-urgent-margin = 1
+label-urgent-font = 3
+
+label-empty = %index%
+label-empty-padding = 2
+label-empty-margin = 1
+label-empty-font = 3
 
 [module/xwindow]
 type = internal/xwindow

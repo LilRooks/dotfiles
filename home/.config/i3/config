@@ -42,7 +42,7 @@ set $lockcmd ~/.config/i3/lock.sh
 
 # General Configuration
 font pango: Noto 10
-gaps inner 10
+gaps inner 50
 gaps outer 0
 floating_modifier $mod
 hide_edge_borders both
@@ -228,7 +228,7 @@ client.urgent           $base02 $base08    $base00 $base0F
 #    tray_output primary
 #}
 
-# exec --no-startup-id feh --bg-scale "$home/.config/i3/background.png"
+exec --no-startup-id feh --bg-scale "$home/.config/i3/background.png"
 exec_always --no-startup-id "$home/.scripts/mpvbg-start"
 exec_always --no-startup-id "$home/.scripts/polybar-start"
 exec --no-startup-id "compton -f -D 5"
