@@ -13,17 +13,20 @@ bspc config split_ratio          0.52
 bspc config focus_follows_pointer true
 
 
-bspc rule -a discord desktop='I'
+bspc rule -a discord desktop='I' follow=on
 bspc rule -a Telegram desktop='I'
 
 bspc rule -a firefox desktop='II'
 
 bspc rule -a \*:ws3 desktop='III'
 
-bspc rule -a Gimp desktop='V' follow=on
-bspc rule -a \*:ws5 desktop='V'
+bspc rule -a Steam desktop='IV' follow=on
+bspc rule -a Gimp desktop='IV' follow=on
+
+bspc rule -a Thunderbird desktop='V'
 
 bspc rule -a Lxappearance state=floating
+bspc rule -a \*:cava state=floating sticky=on
 
 
 # Autostart
@@ -31,9 +34,9 @@ startup_lock_file=/tmp/bspwm-startup.lock
 if [ ! -f $startup_lock_file ]; then
     touch $startup_lock_file
 
+    urxvt -geometry 33x14-25-25 -name 'cava' -e cava &
 	$BTERM -name 'ws3' &
 	$BTERM -name 'ws3' &
-	$BTERM -name 'ws5' &
 	compton -f -D 5 &
 	xfce4-clipmana &
 	redshift-gtk &

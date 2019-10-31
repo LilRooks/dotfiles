@@ -11,7 +11,7 @@ super + @space
 	dmenu_run_history
 
 # make sxhkd reload its configuration files:
-super + Escape
+super + shift + r
 	pkill -USR1 -x sxhkd
 
 #
@@ -20,7 +20,7 @@ super + Escape
 
 # quit/restart bspwm
 super + alt + {q,r}
-	bspc {quit,wm -r}
+	{rm /tmp/bspwm-startup.lock && bspc quit, bspc wm -r}
 
 # close and kill
 super + {_,shift + }w
@@ -119,3 +119,30 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# power chords
+super + Escape ; {l,s,h, shift + r, shift + s, shift + e}
+    lock.sh {_, & (sleep 1 && systemctl suspend), & (sleep 1 && systemctl suspend), & systemctl reboot, & systemctl poweroff -i, rm /tmp/bspwm-startup.lock && bspc quit}
+
+# screenshots
+{_, super, shift} + @Print
+    xfce4-screenshooter -{f,w,r}
+
+control + {_, super +} @Print
+    screencast{_,  nomouse}
+
+control + shift + @Print
+    pkill -f x11grab
+
+# xf86
+XF86Audio{Raise,Lower}Volume
+    pactl set-sink-mute 0 0 && pactl set-sink-volume 0 {+,-}5%
+
+XF86Audio{_,Mic}Mute
+    {pactl set-sink-mute 0 toggle, amixer set Capture toggle}
+
+XF86MonBrightnessUp
+    brightnessctl set +5%
+
+XF86MonBrightnessDown
+    brightnessctl set 5%-
