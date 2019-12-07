@@ -3,5 +3,7 @@ import os,random,sys
 wpDir = os.path.expanduser('~') + "/.wallpapers"
 bg = random.choice(os.listdir(wpDir))
 
-cmd = 'xwinwrap -g %s -ov -- mpv --wid WID %s/%s --loop --no-osc' % (sys.argv[1], wpDir,bg)
+cmd = 'xwinwrap -b -g %s -ov -ni -nf -o 1 -- mpv --wid WID %s/%s --loop --no-osc' % (sys.argv[1], wpDir,bg)
+cmd2 = 'feh --bg-fill  %s/%s' % (wpDir,bg)
+os.system(cmd2)
 os.system(cmd)

@@ -37,12 +37,12 @@ set $ws10 "10"
 set $term urxvt
 set $home /home/tet
 set $i3conf ~/.config/i3
-set $menu ~/.config/i3/dmenu_run_history
-set $lockcmd ~/.config/i3/lock.sh
+set $menu ~/.scripts/dmenu_run_history
+set $lockcmd ~/.scripts/lock.sh
 
 # General Configuration
 font pango: Noto 10
-gaps inner 50
+gaps inner 0
 gaps outer 0
 floating_modifier $mod
 hide_edge_borders both
@@ -80,7 +80,7 @@ bindsym $mod+f fullscreen toggle
 
 bindsym $mod+b splith
 bindsym $mod+v splitv
-bindsym $mod+space focus mode_toggle
+bindsym $mod+d focus mode_toggle
 bindsym $mod+r mode "  "
 
 bindsym $mod+Shift+minus move scratchpad
@@ -143,7 +143,7 @@ mode $mode_toolset {
 bindsym $mod+Shift+a mode $mode_toolset
 
 bindsym $mod+Return exec "$term"
-bindsym $mod+d exec "$menu"
+bindsym $mod+space exec "$menu"
 
 # Screenshoot-Related Bindings
 bindsym --release Print exec "xfce4-screenshooter -f"
@@ -154,9 +154,9 @@ bindsym --release Control+$mod+Print exec "$i3conf/screencast nomouse"
 bindsym --release Control+Shift+Print exec "pkill -f x11grab"
 
 # XF86 and Similar Key Bindings
-bindsym XF86AudioLowerVolume exec "pactl set-sink-mute 0 0 && pactl set-sink-volume 0 -5%"
-bindsym XF86AudioRaiseVolume exec "pactl set-sink-mute 0 0 && pactl set-sink-volume 0 +5%"
-bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
+bindsym XF86AudioLowerVolume exec "pactl set-sink-mute `pacmd list-sinks | grep 'index:' | cut -b12-` 0 && pactl set-sink-volume `pacmd list-sinks | grep 'index:' | cut -b12-` -5%"
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-mute `pacmd list-sinks | grep 'index:' | cut -b12-` 0 && pactl set-sink-volume `pacmd list-sinks | grep 'index:' | cut -b12-` +5%"
+bindsym XF86AudioMute exec "pactl set-sink-mute `pacmd list-sinks | grep 'index:' | cut -b12-` toggle"
 bindsym XF86AudioMicMute exec "amixer set Capture toggle"
 bindsym XF86MonBrightnessUp exec "xbacklight +5"
 bindsym XF86MonBrightnessDown exec "xbacklight -5"
@@ -228,14 +228,22 @@ client.urgent           $base02 $base08    $base00 $base0F
 #    tray_output primary
 #}
 
-exec --no-startup-id feh --bg-scale "$home/.config/i3/background.png"
-exec_always --no-startup-id "$home/.scripts/mpvbg-start"
-exec_always --no-startup-id "$home/.scripts/polybar-start"
+exec "xset b off"
+exec "xset -dpms"
+exec "xset s noblank"
+exec "xset s off"
+exec "xinput --disable 'AlpsPS/2 ALPS DualPoint TouchPad'"
+exec "setxkbmap -variant mac -option 'caps:swapescape,compose:rctrl'"
+#exec --no-startup-id feh --bg-scale "$home/.config/i3/background.png"
+#exec_always --no-startup-id "$home/.scripts/mpvbg-start"
+#exec_always --no-startup-id "$home/.scripts/polybar-start"
+exec "xrandr --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off --output HDMI-1 --off --output DP-2 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-2 --off"
 exec --no-startup-id "compton -f -D 5"
+exec --no-startup-id "blueman-applet"
 exec --no-startup-id "xfce4-clipman"
 exec --no-startup-id "redshift-gtk"
 exec --no-startup-id "nm-applet"
 exec --no-startup-id "dunst"
-exec "$term -name 'ws3'"
-exec "$term -name 'ws3'"
-exec "$term -name 'ws5'"
+#exec "$term -name 'ws3'"
+#exec "$term -name 'ws3'"
+#exec "$term -name 'ws5'"

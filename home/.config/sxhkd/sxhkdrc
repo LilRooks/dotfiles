@@ -7,7 +7,7 @@ super + Return
     urxvt
 
 # program launcher
-super + @space
+super + space
     dmenu_run_history
 
 # make sxhkd reload its configuration files:
@@ -36,7 +36,7 @@ super + y
 
 # swap the current node and the biggest node
 super + g
-    bspc node -s biggest
+    bspc node -s biggest.local
 
 #
 # state/flags
@@ -72,7 +72,11 @@ super + bracket{left,right}
 
 # focus the last node/desktop
 super + {grave,Tab}
-    bspc {node,desktop} -f last
+    eval "$(xdotool getmouselocation --shell)" &&\
+    xdotool mousemove 25 25 &&\
+    bspc {node,desktop} -f last.local &&\
+    xdotool mousemove --screen $SCREEN $X $Y
+    #bspc {node,desktop} -f last.local
 
 # focus the older or newer node in the focus history
 super + {o,i}
@@ -82,7 +86,10 @@ super + {o,i}
 
 # focus or send to the given desktop
 super + {_,shift + }{1,2,3,4,5,6,7,8,9,0}
-    bspc {desktop -f,node -d} '{I,II,III,IV,V,VI,VII,VIII,IX,X}'
+    eval "$(xdotool getmouselocation --shell)" &&\
+    xdotool mousemove 25 25 &&\
+    bspc {desktop -f,node -d} '{I,II,III,IV,V,VI,VII,VIII,IX,X}' &&\
+    xdotool mousemove --screen $SCREEN $X $Y
 
 #
 # preselect
@@ -114,7 +121,7 @@ super + alt + {h,j,k,l}
 
 # contract a window by moving one of its side inward
 super + alt + shift + {h,j,k,l}
-    bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+    bspc node -z {left 20 0,top 0 20,bottom 0 -20,right -20 0}
 
 # move a floating window
 super + {Left,Down,Up,Right}
@@ -122,7 +129,7 @@ super + {Left,Down,Up,Right}
 
 # power chords
 super + Escape ; {l,s,h, shift + r, shift + s, shift + e}
-    lock.sh {_, & (sleep 1 && systemctl suspend), & (sleep 1 && systemctl suspend), & systemctl reboot, & systemctl poweroff -i, rm /tmp/bspwm-startup.lock && bspc quit}
+    {lock.sh, lock.sh & (sleep 1 && systemctl suspend), lock.sh & (sleep 1 && systemctl hibernate), systemctl reboot, systemctl poweroff -i, rm /tmp/bspwm-startup.lock && bspc quit}
 
 # screenshots
 {_, super, shift} + @Print
@@ -136,10 +143,10 @@ control + shift + @Print
 
 # xf86
 XF86Audio{Raise,Lower}Volume
-    pactl set-sink-mute 0 0 && pactl set-sink-volume 0 {+,-}5%
+    pactl set-sink-mute `pacmd list-sinks | grep 'index:' | cut -b12-` 0 && pactl set-sink-volume `pacmd list-sinks | grep 'index:' | cut -b12-` {+,-}5%
 
 XF86Audio{_,Mic}Mute
-    {pactl set-sink-mute 0 toggle, amixer set Capture toggle}
+    {pactl set-sink-mute `pacmd list-sinks | grep 'index:' | cut -b12-` toggle, amixer set Capture toggle}
 
 XF86MonBrightnessUp
     brightnessctl set +5%
