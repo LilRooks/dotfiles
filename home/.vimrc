@@ -2,11 +2,6 @@
 set nocompatible
 
 " --- General Settings ---
-nnoremap H 0
-nnoremap L $
-nnoremap J G
-nnoremap K gg
-
 map <tab> %
 set backspace=indent,eol,start
 

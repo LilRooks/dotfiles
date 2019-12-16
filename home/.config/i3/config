@@ -154,8 +154,8 @@ bindsym --release Control+$mod+Print exec "$i3conf/screencast nomouse"
 bindsym --release Control+Shift+Print exec "pkill -f x11grab"
 
 # XF86 and Similar Key Bindings
-bindsym XF86AudioLowerVolume exec "pactl set-sink-mute `pacmd list-sinks | grep 'index:' | cut -b12-` 0 && pactl set-sink-volume `pacmd list-sinks | grep 'index:' | cut -b12-` -5%"
-bindsym XF86AudioRaiseVolume exec "pactl set-sink-mute `pacmd list-sinks | grep 'index:' | cut -b12-` 0 && pactl set-sink-volume `pacmd list-sinks | grep 'index:' | cut -b12-` +5%"
+bindsym XF86AudioLowerVolume exec "pactl set-sink-mute `pacmd list-sinks | grep 'RUNNING' -B5 | grep 'index:' | cut -b12-` 0 && pactl set-sink-volume `pacmd list-sinks | grep 'index:' | cut -b12-` -5%"
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-mute `pacmd list-sinks | grep 'RUNNING' -B5 | grep 'index:' | cut -b12-` 0 && pactl set-sink-volume `pacmd list-sinks | grep 'index:' | cut -b12-` +5%"
 bindsym XF86AudioMute exec "pactl set-sink-mute `pacmd list-sinks | grep 'index:' | cut -b12-` toggle"
 bindsym XF86AudioMicMute exec "amixer set Capture toggle"
 bindsym XF86MonBrightnessUp exec "xbacklight +5"

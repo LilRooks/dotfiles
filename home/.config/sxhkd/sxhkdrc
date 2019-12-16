@@ -143,10 +143,10 @@ control + shift + @Print
 
 # xf86
 XF86Audio{Raise,Lower}Volume
-    pactl set-sink-mute `pacmd list-sinks | grep 'index:' | cut -b12-` 0 && pactl set-sink-volume `pacmd list-sinks | grep 'index:' | cut -b12-` {+,-}5%
+    pactl set-sink-mute `pacmd list-sinks | grep 'RUNNING' -B5 | grep 'index:' | cut -b12-` 0 && pactl set-sink-volume `pacmd list-sinks | grep 'RUNNING' -B5 | grep 'index:' | cut -b12-` {+,-}5%
 
 XF86Audio{_,Mic}Mute
-    {pactl set-sink-mute `pacmd list-sinks | grep 'index:' | cut -b12-` toggle, amixer set Capture toggle}
+    {pactl set-sink-mute `pacmd list-sinks | grep 'RUNNING' -B5 | grep 'index:' | cut -b12-` toggle, amixer set Capture toggle}
 
 XF86MonBrightnessUp
     brightnessctl set +5%
