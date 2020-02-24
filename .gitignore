@@ -1,3 +1,4 @@
 tags
 *.db
 *.pickle
+local.zsh
