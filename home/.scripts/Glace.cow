@@ -4,29 +4,29 @@
 
 $x = "\e[49m  ";          #reset color
 $t = "$thoughts ";
-$a = "\e[48;5;123m  ";
-$b = "\e[48;5;81m  ";
-$c = "\e[48;5;74m  ";
-$d = "\e[48;5;30m  ";
-$e = "\e[48;5;39m  ";
-$f = "\e[48;5;23m  ";
-$g = "\e[48;5;32m  ";
-$h = "\e[48;5;1m  ";
+$a = "\e[48;5;123m22";
+$b = "\e[48;5;81mhh";
+$c = "\e[48;5;74myy";
+$d = "\e[48;5;30m//";
+$e = "\e[48;5;39mss";
+$f = "\e[48;5;23m..";
+$g = "\e[48;5;32moo";
+$h = "\e[48;5;1mUU";
 
 $the_cow = <<EOC
    $t                                             
-      $a  $b$c$x                                    
-    $a$d  $x$d$c$b$c$x                        $d  $x
-    $b  $x$e$d$e$d    $b  $x$d  $x        $d      $x
-        $b$d$b$e$d$e$d$x$a$b$x$c  $x$d$c  $d    $x  
-        $d$e$b$d$e$b$e$x$d$a$b$x$c    $a$c$d  $c$x  
-        $f$d$e$d$e$b$d$x$a$d$a$d$x$b$x$c$b  $c$x    
-        $b$d    $f$d$x$g$x$b  $a$x$b$c$x            
-          $b$a$b  $e$x$g  $x    $c$b$c$x            
-        $b$d$a  $x    $g$e$x  $c$b$c$x              
-          $c$b    $c$x$d$e$g$x$d  $x                
+      $a$a$b$c$x                                    
+    $a$d$d$x$d$c$b$c$x                        $d$d$x
+    $b$b$x$e$d$e$d$d$d$b$b$x$d$d$x        $d$d$d$d$x
+        $b$d$b$e$d$e$d$x$a$b$x$c$c$x$d$c$c$d$d$d$x  
+        $d$e$b$d$e$b$e$x$d$a$b$x$c$c$c$a$c$d$d$c$x  
+        $f$d$e$d$e$b$d$x$a$d$a$d$x$b$x$c$b$b$c$x    
+        $b$d$d$d$f$d$x$g$x$b$b$a$x$b$c$x            
+          $b$a$b$b$e$x$g$g$x    $c$b$c$x            
+        $b$d$a$a$x    $g$e$x  $c$b$c$x              
+          $c$b$b$b$c$x$d$e$g$x$d$d$x                
             $h$d$c$d$x  $g$e$x                      
-          $d$f  $x$f  $x$d  $g$x                    
-              $d    $x    $d    $x                  
+          $d$f$f$x$f$f$x$d$d$g$x                    
+              $d$d$d$x    $d$d$d$x                  
                                                     
 EOC
