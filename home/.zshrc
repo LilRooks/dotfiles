@@ -108,3 +108,5 @@ compinit
 source ~/.purepower
 export WORKON_HOME=~/Envs
 source /usr/bin/virtualenvwrapper.sh
+
+fortune -c -e anti-jokes ascii-art | cowthink -f ~/.scripts/Glace.cow -n | lolcat

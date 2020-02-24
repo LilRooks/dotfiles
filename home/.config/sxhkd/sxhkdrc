@@ -11,16 +11,12 @@ super + space
     dmenu_run_history
 
 # make sxhkd reload its configuration files:
-super + shift + r
-    pkill -USR1 -x sxhkd
+super + {shift,alt} + r
+    {pkill -USR1 -x sxhkd, bspc wm -r}
 
 #
 # bspwm hotkeys
 #
-
-# quit/restart bspwm
-super + alt + {q,r}
-    {rm /tmp/bspwm-startup.lock && bspc quit, bspc wm -r}
 
 # close and kill
 super + {_,shift + }w
@@ -45,6 +41,9 @@ super + g
 # set the window state
 super + {t,shift + t,s,f}
     bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+super + shift + s
+    bspc node -g sticky
 
 # set the node flags
 super + ctrl + {m,x,y,z}
@@ -143,10 +142,10 @@ control + shift + @Print
 
 # xf86
 XF86Audio{Raise,Lower}Volume
-    pactl set-sink-mute `pacmd list-sinks | grep 'RUNNING' -B5 | grep 'index:' | cut -b12-` 0 && pactl set-sink-volume `pacmd list-sinks | grep 'RUNNING' -B5 | grep 'index:' | cut -b12-` {+,-}5%
+    pactl set-sink-mute `pacmd list-sinks | grep 'index:' | cut -b12-` 0 && pactl set-sink-volume `pacmd list-sinks | grep 'index:' | cut -b12-` {+,-}5%
 
 XF86Audio{_,Mic}Mute
-    {pactl set-sink-mute `pacmd list-sinks | grep 'RUNNING' -B5 | grep 'index:' | cut -b12-` toggle, amixer set Capture toggle}
+    {pactl set-sink-mute `pacmd list-sinks | grep 'index:' | cut -b12-` toggle, amixer set Capture toggle}
 
 XF86MonBrightnessUp
     brightnessctl set +5%

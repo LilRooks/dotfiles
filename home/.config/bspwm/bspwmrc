@@ -34,12 +34,16 @@ bspc rule -a Thunderbird desktop='V'
 
 bspc rule -a Lxappearance state=floating
 bspc rule -a \*:cava state=floating sticky=on
+bspc rule -a firefox:Toolkit sticky=on
+
+~/.scripts/bspwm_steam
 
 
 # Autostart
 startup_lock_file=/tmp/bspwm-startup.lock
 if [ ! -f $startup_lock_file ]; then
     touch $startup_lock_file
+	feh --bg-fill --randomize ~/.wallpapers
 
     my_laptop_external_monitor=$(xrandr --query | grep 'DP-1')
     if [[ $my_laptop_external_monitor = *connected* ]]; then
@@ -47,15 +51,14 @@ if [ ! -f $startup_lock_file ]; then
     fi
 
     urxvt -geometry 33x14-25-25 -name 'cava' -bg "[58]#06060a" -e cava &
-	#feh --bg-fill --randomize ~/.wallpapers
 	$BTERM -name 'ws3' &
     udiskie --tray -A &
-	compton -f -D 5 &
+	picom -f -D 5 &
 	xfce4-clipman &
 	redshift-gtk &
     blueman-applet &
 	polybar-start
 	nm-applet &
 	dunst &
-    conky & (sleep 5 && mpvbg-start)
+    conky & (sleep 2 && mpvbg-start)
 fi
