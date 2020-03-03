@@ -78,5 +78,5 @@ if [ ! -f $startup_lock_file ]; then
 	polybar-start
 	nm-applet &
 	dunst &
-    conky & (sleep 2 && mpvbg-start)
+    conky & (sleep 2 && gifbg-start)
 fi

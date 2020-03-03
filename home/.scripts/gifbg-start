@@ -8,7 +8,7 @@ while pgrep -u $UID -x xwinwrap >/dev/null; do sleep 1; done
 
 # Launch bar1 and bar2
 xrandr | grep -sw "connected" | grep -soP "\d+x\S+" | while read -r line ; do
-    ~/.scripts/mpvbg $line &
+    ~/.scripts/gifbg $line &
 done
 #~/.scripts/mpvbg second &
 
