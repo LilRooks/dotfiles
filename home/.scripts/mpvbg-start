@@ -7,7 +7,9 @@ killall xwinwrap
 while pgrep -u $UID -x xwinwrap >/dev/null; do sleep 1; done
 
 # Launch bar1 and bar2
-~/.scripts/mpvbg $(xrandr | grep -sw "connected" | grep eDP-1 | cut -d ' ' -f 4) &
+xrandr | grep -sw "connected" | grep -soP "\d+x\S+" | while read -r line ; do
+    ~/.scripts/mpvbg $line &
+done
 #~/.scripts/mpvbg second &
 
 echo "Background launched..."

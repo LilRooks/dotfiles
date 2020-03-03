@@ -10,14 +10,36 @@ setxkbmap -variant mac -option 'caps:swapescape,compose:rctrl'
 
 sxhkd &
 
-bspc monitor eDP-1 -d I II III IV V
-bspc monitor DP-2 -d VI VII VIII IX X
+monitor2=$(xrandr --query | grep 'DP-2')
+#monitor3=$(xrandr --query | grep 'HDMI-1')
+#if [[ $monitor2 = *connected* ]]; then
+#    if [[ $monitor3 = *connected* ]]; then
+#        prim='DP-2'
+#        seco='HDMI-1'
+#        edp1='--output eDP-1 --off'
+#    else
+#        prim='eDP-1'
+#        seco='DP-2'
+#    fi
+#    xrandr $edp1 --output $seco --mode 1920x1080 --output $prim --primary --right-of $seco --mode 1920x1080
+#    bspc monitor $seco -d VI VII VIII IX X
+# TODO more power, go to jump
+if [[ $monitor2 = *connected* ]]; then
+    prim='DP-2'
+    xrandr --output eDP-1 --off --output $prim --primary --mode 1920x1080 
+# jump
+else
+    prim='eDP-1'
+fi
 
-bspc config border_width         2
-bspc config window_gap          50
+bspc monitor $prim -d I II III IV V
 
-bspc config split_ratio          0.52
-bspc config right_padding        325
+bspc config border_width           2
+bspc config window_gap             50
+
+bspc config split_ratio            0.52
+bspc config right_padding          0
+bspc config -m $prim right_padding 325
 
 
 bspc rule -a discord desktop='I' follow=on
@@ -38,19 +60,15 @@ bspc rule -a firefox:Toolkit sticky=on
 
 ~/.scripts/bspwm_steam
 
+bspc desktop I -f
 
 # Autostart
 startup_lock_file=/tmp/bspwm-startup.lock
 if [ ! -f $startup_lock_file ]; then
     touch $startup_lock_file
-	feh --bg-fill --randomize ~/.wallpapers
-
-    my_laptop_external_monitor=$(xrandr --query | grep 'DP-1')
-    if [[ $my_laptop_external_monitor = *connected* ]]; then
-        xrandr --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off --output HDMI-1 --off --output DP-2 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-2 --off
-    fi
 
     urxvt -geometry 33x14-25-25 -name 'cava' -bg "[58]#06060a" -e cava &
+    kdeconnect-indicator &
 	$BTERM -name 'ws3' &
     udiskie --tray -A &
 	picom -f -D 5 &
