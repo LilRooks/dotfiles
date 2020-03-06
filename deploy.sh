@@ -51,6 +51,9 @@ echo
 # 4. Synchronizes other dotfiles
 git clone https://github.com/gmarik/Vundle.vim ~/.vim/bundle/Vundle.vim
 
+mkdir ~/.config
+mkdir ~/.ssh
+
 ln -sv $PWD/home/.* ~/
 ln -sv $PWD/home/.config/* ~/.config/
 ln -sv $PWD/home/.ssh/* ~/.ssh/
