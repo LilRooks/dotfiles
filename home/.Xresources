@@ -38,6 +38,7 @@
 URxvt.font: xft:DroidSansMonoForPowerline:size=10, \
             xft:TwitterColorEmojiSVGinOT:size=10, \
             xft:FontAwesome5FreeSolid:size=5, \
+            xft:FontAwesome5Brands:size=5, \
             xft:DejaVuSansMono:size=10
 URxvt.letterSpace: 0
 
