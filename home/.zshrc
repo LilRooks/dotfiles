@@ -1,3 +1,5 @@
+[[ -f /data/data/com.termux ]] && ROOT=/data/data/com.termux
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -107,6 +109,6 @@ export EDITOR=vim
 compinit
 source ~/.purepower
 export WORKON_HOME=~/Envs
-source /usr/bin/virtualenvwrapper.sh
+source $ROOT/usr/bin/virtualenvwrapper.sh
 
 fortune -c -e ~/.scripts/anti-jokes ~/.scripts/ascii-art | cowthink -f ~/.scripts/Glace.cow -n | lolcat

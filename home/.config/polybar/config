@@ -86,6 +86,7 @@ cursor-scroll = ns-resize
 
 [bar/bottom]
 monitor = ${env:MONITOR:}
+wm-restack = bspwm
 width = 100%
 height = 30
 radius = 6.0
