@@ -1,4 +1,4 @@
-[[ -d /data/data/com.termux ]] && ROOT=/data/data/com.termux
+[[ -d /data/data/com.termux ]] && ROOT=/data/data/com.termux/files
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
