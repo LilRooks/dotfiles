@@ -111,4 +111,4 @@ source ~/.purepower
 export WORKON_HOME=~/Envs
 source $ROOT/usr/bin/virtualenvwrapper.sh
 
-fortune -c -e ~/.scripts/anti-jokes ~/.scripts/ascii-art | cowthink -f ~/.scripts/Glace.cow -n | lolcat
+fortune ~/.scripts/anti-jokes ~/.scripts/ascii-art | cowthink -f ~/.scripts/Glace.cow -n | lolcat
