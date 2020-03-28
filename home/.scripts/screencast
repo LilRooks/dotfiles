@@ -10,7 +10,7 @@ while getopts "n" ARGX; do
     esac
 done
 
-ffmpeg -f x11grab ${NOMOUSE:+'-draw_mouse 0'} -s "$W"x"$H" -i :0.0+$X,$Y "$TMPFILE"
+ffmpeg -f x11grab "$@" -s "$W"x"$H" -i :0.0+$X,$Y "$TMPFILE"
 #if [ $# -gt 0 ]; then
 #    ffmpeg -f x11grab -draw_mouse 0 -s "$W"x"$H" -i :0.0+$X,$Y "$TMPFILE"
 #else

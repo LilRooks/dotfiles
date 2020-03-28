@@ -11,7 +11,7 @@ setxkbmap -variant mac -option 'caps:swapescape,compose:rctrl'
 sxhkd &
 
 monitor2=$(xrandr --query | grep 'DP-2')
-#monitor3=$(xrandr --query | grep 'HDMI-1')
+monitor3=$(xrandr --query | grep 'HDMI-1')
 #if [[ $monitor2 = *connected* ]]; then
 #    if [[ $monitor3 = *connected* ]]; then
 #        prim='DP-2'
@@ -23,23 +23,32 @@ monitor2=$(xrandr --query | grep 'DP-2')
 #    fi
 #    xrandr $edp1 --output $seco --mode 1920x1080 --output $prim --primary --right-of $seco --mode 1920x1080
 #    bspc monitor $seco -d VI VII VIII IX X
-# TODO more power, go to jump
-if [[ $monitor2 = *disconnected* ]]; then
+#else
+#    prim='DP-2'
+#    seco='eDP-1'
+#fi
+# TODO more power, uncommment
+if xrandr --query | grep "HDMI-1" | grep -qsw "connected"; then
+    prim='HDMI-1'
+    offm='eDP-1'
+    prim=''
+elif xrandr --query | grep "DP-2" | grep -qsw "connected"; then
+    prim="DP-2"
+    offm="eDP-1"
+else
     prim='eDP-1'
     offm='DP-2'
-# jump
-else
-    prim='DP-2'
-    offm='eDP-1'
 fi
+
 xrandr --output $offm --off --output $prim --primary --mode 1920x1080 
+
+[ ! -f /tmp/bspwm-startup.lock ] && bspc monitor $prim -d I II III IV V
 
 bspc config border_width           2
 bspc config window_gap             50
 
 bspc config split_ratio            0.52
-bspc config right_padding          0
-bspc config -m $prim right_padding 325
+bspc config right_padding 335
 
 
 bspc rule -a discord desktop='I' follow=on
@@ -76,8 +85,6 @@ if [ ! -f $startup_lock_file ]; then
 	nm-applet &
 	dunst &
     conky &
-
-    bspc monitor $prim -d I II III IV V
 fi
 polybar-start
 sleep 2 && gifbg-start

@@ -134,7 +134,7 @@ super + Escape ; {l,s,h, shift + r, shift + s, shift + e}
     xfce4-screenshooter -{f,w,r}
 
 control + {_, super +} @Print
-    screencast{_,  nomouse}
+    screencast{_,  -draw_mouse 0}
 
 control + shift + @Print
     pkill -f x11grab
