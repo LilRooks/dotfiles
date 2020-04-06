@@ -1,10 +1,3 @@
-# Glace
-# by eevee
-# Generated with Charc0al's cowsay file converter http://charc0al.github.io/cowsay-files/converter
-
-$x = "\e[49m  ";          #reset color
-$t = "$thoughts ";
-
 $the_cow = <<EOC
-   $t                                             
+   $thoughts
 EOC
