@@ -5,5 +5,5 @@ steamlib=/home/Share/Steam
 mygames=$(ls $steamlib/steamapps/appmanifest_*.acf | sed 's/[^0-9]*//g')    # this sed command removes everything but the digits
 
 for game in $mygames; do
-    bspc rule -a steam_app_$game desktop='V' state=fullscreen
+    bspc rule -a steam_app_$game desktop='IV' state=fullscreen
 done

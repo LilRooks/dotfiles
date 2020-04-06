@@ -147,7 +147,7 @@ XF86Audio{_,Mic}Mute
     {pactl set-sink-mute `pacmd list-sinks | grep 'index:' | cut -b12-` toggle, amixer set Capture toggle}
 
 XF86Audio{Prev,Stop,Play,Next}
-    playerctl {previous, stop, play-pause, next}
+    ~/.polybar-scripts/player-mpris-medium.sh playerctl {previous, stop, play-pause, next}
 
 XF86MonBrightnessUp
     brightnessctl set +5%
