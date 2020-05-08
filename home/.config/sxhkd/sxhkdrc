@@ -63,7 +63,7 @@ super + {p,b,comma,period}
 
 # focus the next/previous node in the current desktop
 super + {_,shift + }c
-    bspc node -f {next,prev}.local
+    bspc node -f {next,prev}.local.!sticky
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
@@ -145,6 +145,9 @@ XF86Audio{Raise,Lower}Volume
 
 XF86Audio{_,Mic}Mute
     {pactl set-sink-mute `pacmd list-sinks | grep 'index:' | cut -b12-` toggle, amixer set Capture toggle}
+
+shift + XF86AudioMute
+    amixer set Capture toggle
 
 XF86Audio{Prev,Stop,Play,Next}
     ~/.polybar-scripts/player-mpris-medium.sh playerctl {previous, stop, play-pause, next}

@@ -14,7 +14,8 @@ g="\e[48;5;32m  ";
 h="\e[48;5;1m  ";
 
 #cat << EOC
-echo -e "      $a$a$b$c$x                                    
+echo -e "\
+      $a$a$b$c$x                                    
     $a$d$d$x$d$c$b$c$x                        $d$d$x
     $b$b$x$e$d$e$d$d$d$b$b$x$d$d$x        $d$d$d$d$x
         $b$d$b$e$d$e$d$x$a$b$x$c$c$x$d$c$c$d$d$d$x  

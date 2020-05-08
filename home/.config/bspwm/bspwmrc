@@ -31,7 +31,6 @@ monitor3=$(xrandr --query | grep 'HDMI-1')
 if xrandr --query | grep "HDMI-1" | grep -qsw "connected"; then
     prim='HDMI-1'
     offm='eDP-1'
-    prim=''
 elif xrandr --query | grep "DP-2" | grep -qsw "connected"; then
     prim="DP-2"
     offm="eDP-1"
@@ -42,7 +41,12 @@ fi
 
 xrandr --output $offm --off --output $prim --primary --mode 1920x1080 
 
-[ ! -f /tmp/bspwm-startup.lock ] && bspc monitor $prim -d I II III IV V
+if [ ! -f /tmp/bspwm-startup.lock ]; then
+    bspc monitor $prim -d I II III IV V
+else
+    bspc query --desktops | while read -r line; do bspc -m $prim; done
+fi
+bspc monitor $offm --remove
 
 bspc config border_width           2
 bspc config window_gap             50
@@ -65,6 +69,7 @@ bspc rule -a Thunderbird desktop='V'
 
 bspc rule -a Lxappearance state=floating
 bspc rule -a \*:stick state=floating sticky=on
+bspc rule -a \*:above state=floating layer=above sticky=on
 bspc rule -a \*:below state=floating layer=below sticky=on 
 bspc rule -a firefox:Toolkit sticky=on
 
@@ -90,6 +95,3 @@ if [ ! -f $startup_lock_file ]; then
 fi
 polybar-start
 sleep 2 && gifbg-start
-
-bspc query --desktops | while read -r line; do bspc -m $prim
-bspc desktop III -f
