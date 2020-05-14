@@ -44,9 +44,10 @@ checkShell
 echo
 
 # 3. Install zsh mods
-sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -qO -)"
-rm ~/.zshrc
-echo
+curl -L git.io/antigen > $HOME/.antigen.zsh
+#sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -qO -)"
+#rm ~/.zshrc
+#echo
 
 # 4. Synchronizes other dotfiles
 git clone https://github.com/gmarik/Vundle.vim ~/.vim/bundle/Vundle.vim
