@@ -44,7 +44,7 @@ xrandr --output $offm --off --output $prim --primary --mode 1920x1080
 if [ ! -f /tmp/bspwm-startup.lock ]; then
     bspc monitor $prim -d I II III IV V
 else
-    bspc query --desktops | while read -r line; do bspc -m $prim; done
+    bspc query --desktops | while read -r line; do bspc desktop $line -m $prim; done
 fi
 bspc monitor $offm --remove
 
