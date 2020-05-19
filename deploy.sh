@@ -44,7 +44,7 @@ checkShell
 echo
 
 # 3. Install zsh mods
-curl -L git.io/antigen > $HOME/.antigen.zsh
+curl -L git.io/antigen > $HOME/antigen.zsh
 #sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -qO -)"
 #rm ~/.zshrc
 #echo
