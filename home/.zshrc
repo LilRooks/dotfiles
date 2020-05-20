@@ -22,8 +22,8 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
 
 #zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
-#bindkey -v
-#bindkey '^R' history-incremental-search-backward
+bindkey -v
+bindkey '^R' history-incremental-search-backward
 
 export PATH=$PATH:~/.scripts-local:~/.scripts
 export EDITOR=vim
