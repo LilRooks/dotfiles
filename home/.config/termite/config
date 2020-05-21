@@ -1,0 +1,33 @@
+[options]
+audible_bell = true
+font = UbuntuMono Nerd Font 12
+# Length of the scrollback buffer, 0 disabled the scrollback buffer
+# and setting it to a negative value means "infinite scrollback"
+scrollback_lines = 10000
+cursor_blink = off
+
+[colors]
+foreground = #d1d1d1
+
+# 20% background transparency (requires a compositor)
+background = rgba(6, 6, 10, 0.8)
+
+# 8 normal colors
+color0 = #272822
+color1 = #f92672
+color2 = #a6e22e
+color3 = #f4bf75
+color4 = #66d9ef
+color5 = #ae81ff
+color6 = #a1efe4
+color7 = #f8f8f2
+# 8 bright colors
+color8 = #75715e
+color9 = #f92672
+color10 = #a6e22e
+color11 = #f4bf75
+color12 = #66d9ef
+color13 = #ae81ff
+color14 = #a1efe4
+color15 = #f9f8f5
+# vim: ft=dosini cms=#%s
