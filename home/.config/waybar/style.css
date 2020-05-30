@@ -1,0 +1,163 @@
+* {
+    border: none;
+    border-radius: 0;
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: "Ubuntu Nerd Font";
+    font-size: 15px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(43, 48, 59, 0.0);
+    color: #ffffff;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/*
+window#waybar.empty {
+    background-color: transparent;
+}
+window#waybar.solo {
+    background-color: #FFFFFF;
+}
+*/
+
+#workspaces button {
+    min-width: 30px;
+    padding: 0 0px;
+    background-color: #06060a;
+    color: #ffffff;
+    border-bottom: 3px solid transparent;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: inherit;
+    border-bottom: 3px solid #ffffff;
+}
+
+#workspaces button.focused {
+    background-color: #64727D;
+    border-bottom: 3px solid #ffffff;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#mode {
+    background-color: #64727D;
+    color: #fff;
+    border-bottom: 3px solid #ffffff;
+}
+
+#workspaces {
+    margin: 0 10px;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#custom-run,
+#tray,
+#mode {
+    padding: 0 10px;
+    color: #000000;
+}
+
+#custom-run,
+#pulseaudio,
+#network,
+#cpu,
+#battery,
+#clock {
+    margin-left: 10px;
+    border-bottom-left-radius: 8px;
+}
+
+#custom-run,
+#backlight,
+#network,
+#memory,
+#temperature,
+#tray {
+    margin-right: 10px;
+    border-bottom-right-radius: 8px;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#custom-run {
+    background-color: #6d1b7b;
+    color: #fff;
+}
+
+#pulseaudio,
+#backlight {
+    background-color: #ff407e;
+}
+
+#network {
+    background-color: #ffffff;
+}
+
+#cpu,
+#memory {
+    background-color: #df00ff;
+}
+
+#battery,
+#temperature {
+    background-color: #000000;
+    color: #fff;
+}
+
+#clock {
+    background-color: #007aff;
+    color: #fff;
+}
+#tray {
+    background-color: #555;
+}
+
+
+#pulseaudio.muted {
+    border-top: 3px solid #90b1b1;
+    border-bottom: 3px solid transparent;
+}
+
+#network.disconnected {
+    border-top: 3px solid #f53c3c;
+    border-bottom: 3px solid transparent;
+}
+
+#battery.charging {
+    border-top: 3px solid #26A65B;
+    border-bottom: 3px solid transparent;
+}
+
+
+#cpu.critical,
+#memory.critical,
+#temperature.critical {
+    border-top: 3px solid #eb4d4b;
+    border-bottom: 3px solid transparent;
+}
+#cpu.warning,
+#memory.warning,
+#temperature.warning {
+    border-top: 3px solid #f1c40f;
+    border-bottom: 3px solid transparent;
+}

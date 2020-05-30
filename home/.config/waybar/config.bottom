@@ -1,0 +1,32 @@
+{
+    "position": "bottom",
+    "height": 30,
+    "name": "bottom",
+    "modules-center": ["custom/media", "custom/prev", "custom/playpause", "custom/next"],
+
+    "custom/media": {
+        "exec": "~/.polybar-scripts/player-mpris-medium.sh",
+        "interval": 1,
+        "on-scroll-up": "~/.polybar-scripts/player-mpris-medium.sh next",
+        "on-scroll-down": "~/.polybar-scripts/player-mpris-medium.sh prev"
+    },
+    "custom/prev": {
+        "exec": "echo ''",
+        "on-click": "~/.polybar-scripts/player-mpris-medium.sh playerctl prev",
+        "on-scroll-up": "~/.polybar-scripts/player-mpris-medium.sh playerctl position 5+",
+        "on-scroll-down": "~/.polybar-scripts/player-mpris-medium.sh playerctl position 5-"
+    },
+    "custom/prev": {
+        "exec": "echo '玲'",
+        "on-click": "~/.polybar-scripts/player-mpris-medium.sh playerctl prev",
+        "on-scroll-up": "~/.polybar-scripts/player-mpris-medium.sh playerctl position 5+",
+        "on-scroll-down": "~/.polybar-scripts/player-mpris-medium.sh playerctl position 5-"
+    },
+    "custom/prev": {
+        "exec": "echo ''",
+        "on-click": "~/.polybar-scripts/player-mpris-medium.sh playerctl prev",
+        "on-scroll-up": "~/.polybar-scripts/player-mpris-medium.sh playerctl position 5+",
+        "on-scroll-down": "~/.polybar-scripts/player-mpris-medium.sh playerctl position 5-"
+    },
+}
+// vim: ft=json

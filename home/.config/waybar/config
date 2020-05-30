@@ -1,0 +1,111 @@
+{
+    "position": "top",
+    "height": 30,
+    "modules-left": ["custom/run", "sway/workspaces", "sway/mode"],
+    "modules-right": ["pulseaudio", "backlight", "network", "cpu", "memory", "battery", "temperature", "clock", "tray"],
+
+    "custom/run": {
+        "exec": "echo ",
+        "on-click": "killall wofi || wofi --show drun",
+        "on-click-right": "killall wofi || DRI_PRIME=1 wofi --show drun"
+    },
+
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "urgent": "",
+            "focused": "",
+            "default": ""
+        }
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+
+
+    "pulseaudio": {
+        "scroll-step": 5,
+        "format": "{icon} {volume}% {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " muted {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": " muted",
+        "format-icons": {
+            "headphone": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+        "on-click-middle": "pavucontrol"
+    },
+    "backlight": {
+        "format": " {percent}",
+        "on-scroll-up": "brightnessctl set +5%",
+        "on-scroll-down": "brightnessctl set 5%-"
+    },
+
+
+    "network": {
+        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
+        "format-linked": " {ifname} (No IP)",
+        "format-disconnected": "⚠ Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+
+    "cpu": {
+        "states": {
+            "warning": 70,
+            "critical": 85
+        },
+        "format": " {usage}%",
+        "tooltip": false
+    },
+    "memory": {
+        "states": {
+            "warning": 70,
+            "critical": 85
+        },
+        "format": " {}%"
+    },
+
+    "temperature": {
+        "critical-threshold": 70,
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+
+    "clock": {
+        "format": "{:%a %b %d %H:%M:%S}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "tray": {
+        "spacing": 10
+    }
+}
+// vim: ft=json

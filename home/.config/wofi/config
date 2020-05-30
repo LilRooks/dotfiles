@@ -1,0 +1,16 @@
+show=drun
+always_parse_args=true
+
+width=400
+height=700
+prompt=Run Application...
+xoffset=15
+yoffset=15
+allow_images=true
+term=termite
+image_size=24
+
+key_up=k
+key_down=j
+key_left=h
+key_right=l
