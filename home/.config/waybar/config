@@ -93,16 +93,17 @@
             "critical": 15
         },
         "format": "{icon}  {capacity}%",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
         "format-icons": ["", "", "", "", ""]
     },
 
 
     "clock": {
         "format": "{:%a %b %d %H:%M:%S}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "interval": 1
     },
     "tray": {
         "spacing": 10

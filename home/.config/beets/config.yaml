@@ -1,4 +1,4 @@
-plugins: inline convert web lastgenre bpd embedart duplicates missing play
+plugins: inline convert web lastgenre bpd embedart duplicates missing play replaygain
 
 play:
   command: mpv --vid=no --shuffle $args

@@ -1,3 +1,4 @@
+eval $(keychain --eval --quiet id_ed25519 id_rsa)
 fortune ~/.scripts/anti-jokes ~/.scripts/ascii-art | cowthink -f ~/.scripts/blank.cow -n | lolcat
 ~/.scripts/glace
 
@@ -13,9 +14,9 @@ export WORKON_HOME=~/Envs
 source $ROOT/usr/bin/virtualenvwrapper.sh
 
 source $HOME/antigen.zsh
+#antigen bundle ssh-agent
 antigen theme romkatv/powerlevel10k
 antigen bundle robbyrussell/oh-my-zsh lib/
-antigen bundle ssh-agent
 antigen bundle desyncr/auto-ls
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -30,6 +31,9 @@ export EDITOR=vim
 AUTO_LS_COMMANDS=(ls)
 #export HISTFILE=$HOME/.zsh_history
 #export SAVEHIST=200
+
+autoload -Uz compinit
+compinit
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
