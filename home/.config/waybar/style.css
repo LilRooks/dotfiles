@@ -107,20 +107,28 @@ label:focus {
 #pulseaudio,
 #backlight {
     background-color: #ff407e;
+    border-top: 3px solid #ff407e;
+    border-bottom: 3px solid #ff407e;
 }
 
 #network {
     background-color: #ffffff;
+    border-top: 3px solid #ffffff;
+    border-bottom: 3px solid #ffffff;
 }
 
 #cpu,
 #memory {
     background-color: #df00ff;
+    border-top: 3px solid #df00ff;
+    border-bottom: 3px solid #df00ff;
 }
 
 #battery,
 #temperature {
     background-color: #000000;
+    border-top: 3px solid #000000;
+    border-bottom: 3px solid #000000;
     color: #fff;
 }
 
@@ -135,17 +143,14 @@ label:focus {
 
 #pulseaudio.muted {
     border-top: 3px solid #90b1b1;
-    border-bottom: 3px solid transparent;
 }
 
 #network.disconnected {
     border-top: 3px solid #f53c3c;
-    border-bottom: 3px solid transparent;
 }
 
 #battery.charging {
     border-top: 3px solid #26A65B;
-    border-bottom: 3px solid transparent;
 }
 
 
@@ -153,11 +158,9 @@ label:focus {
 #memory.critical,
 #temperature.critical {
     border-top: 3px solid #eb4d4b;
-    border-bottom: 3px solid transparent;
 }
 #cpu.warning,
 #memory.warning,
 #temperature.warning {
     border-top: 3px solid #f1c40f;
-    border-bottom: 3px solid transparent;
 }

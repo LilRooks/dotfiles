@@ -1,10 +1,14 @@
+BTERM=termite
 #
 # wm independent hotkeys
 #
-
+super + v
+    ~/.scripts-local/copy-wl-x
+super + shift+ v
+    wl-paste | xclip -i -selection clipboard
 # terminal emulator
 super + Return
-    urxvt
+    termite
 
 # program launcher
 super + space
@@ -70,6 +74,9 @@ super + bracket{left,right}
     bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
+super + shift + Tab
+    true
+
 super + {grave,Tab}
     eval "$(xdotool getmouselocation --shell)" &&\
     xdotool mousemove 25 25 &&\
@@ -127,7 +134,7 @@ super + {Left,Down,Up,Right}
 
 # power chords
 super + Escape ; {l,s,h, shift + r, shift + s, shift + e}
-    {lock.sh, lock.sh & (sleep 1 && systemctl suspend), lock.sh & (sleep 1 && systemctl hibernate), systemctl reboot, systemctl poweroff -i, rm /tmp/bspwm-startup.lock && bspc quit}
+    {lock.sh, lock.sh & (sleep 1 && systemctl suspend), lock.sh & (sleep 1 && systemctl hibernate), systemctl reboot, systemctl poweroff -i, rm /tmp/bspwm-startup.lock; bspc quit; killall Xwayland}
 
 # screenshots
 {_, super, shift} + @Print

@@ -1,5 +1,5 @@
 #! /bin/sh
-BTERM=urxvt
+export BTERM=termite
 
 xset b off
 xset -dpms
@@ -10,8 +10,8 @@ setxkbmap -variant mac -option 'caps:swapescape,compose:rctrl'
 
 sxhkd &
 
-monitor2=$(xrandr --query | grep 'DP-2')
-monitor3=$(xrandr --query | grep 'HDMI-1')
+#monitor2=$(xrandr --query | grep 'DP-2')
+#monitor3=$(xrandr --query | grep 'HDMI-1')
 #if [[ $monitor2 = *connected* ]]; then
 #    if [[ $monitor3 = *connected* ]]; then
 #        prim='DP-2'
@@ -33,6 +33,9 @@ if xrandr --query | grep "HDMI-1" | grep -qsw "connected"; then
     offm='eDP-1'
 elif xrandr --query | grep "DP-2" | grep -qsw "connected"; then
     prim="DP-2"
+    offm="eDP-1"
+elif xrandr --query | grep "XWAYLAND0" | grep -qsw "connected"; then
+    prim="XWAYLAND0"
     offm="eDP-1"
 else
     prim='eDP-1'
@@ -82,17 +85,17 @@ startup_lock_file=/tmp/bspwm-startup.lock
 if [ ! -f $startup_lock_file ]; then
     touch $startup_lock_file
 
-    urxvt -geometry 33x12-25-63 -name 'stick' -bg "[30]#06060a" -e cava &
-    urxvt -geometry 33x12-25-63 -name 'below' -bg "[58]#06060a" -e cmatrix &
+    #urxvt -geometry 33x12-25-63 -name 'stick' -bg "[30]#06060a" -e cava &
+    #urxvt -geometry 33x12-25-63 -name 'below' -bg "[58]#06060a" -e cmatrix &
     kdeconnect-indicator &
 	$BTERM -name 'ws3' &
     udiskie --tray -A &
 	picom -f -D 5 &
 	xfce4-clipman &
-	redshift-gtk &
+	#redshift-gtk &
     blueman-applet &
 	nm-applet &
-	dunst &
+	#dunst &
     conky &
 fi
 polybar-start
