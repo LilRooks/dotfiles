@@ -10,54 +10,17 @@ setxkbmap -variant mac -option 'caps:swapescape,compose:rctrl'
 
 sxhkd &
 
-#monitor2=$(xrandr --query | grep 'DP-2')
-#monitor3=$(xrandr --query | grep 'HDMI-1')
-#if [[ $monitor2 = *connected* ]]; then
-#    if [[ $monitor3 = *connected* ]]; then
-#        prim='DP-2'
-#        seco='HDMI-1'
-#        edp1='--output eDP-1 --off'
-#    else
-#        prim='eDP-1'
-#        seco='DP-2'
-#    fi
-#    xrandr $edp1 --output $seco --mode 1920x1080 --output $prim --primary --right-of $seco --mode 1920x1080
-#    bspc monitor $seco -d VI VII VIII IX X
-#else
-#    prim='DP-2'
-#    seco='eDP-1'
-#fi
-# TODO more power, uncommment
-if xrandr --query | grep "HDMI-1" | grep -qsw "connected"; then
-    prim='HDMI-1'
-    offm='eDP-1'
-elif xrandr --query | grep "DP-2" | grep -qsw "connected"; then
-    prim="DP-2"
-    offm="eDP-1"
-elif xrandr --query | grep "XWAYLAND0" | grep -qsw "connected"; then
-    prim="XWAYLAND0"
-    offm="eDP-1"
-else
-    prim='eDP-1'
-    offm='DP-2'
-fi
-
-xrandr --output $offm --off --output $prim --primary --mode 1920x1080 
-
 if [ ! -f /tmp/bspwm-startup.lock ]; then
-    bspc monitor $prim -d I II III IV V
-else
-    bspc monitor $offm -a dummy
-    bspc query --desktops --names | while read -r line; do [[ $line == "dummy" ]] || bspc desktop $line -m $prim; done
-    bspc desktop Desktop --remove
+    bspc monitor "eDP-1" -d I II III IV V
 fi
-bspc monitor $offm --remove
 
-bspc config border_width           2
-bspc config window_gap             50
+display-start
 
-bspc config split_ratio            0.52
-bspc config right_padding 335
+bspc config border_width              2
+bspc config window_gap                50
+
+bspc config split_ratio               0.52
+bspc config -m $primary right_padding 335
 
 
 bspc rule -a discord desktop='I' follow=on

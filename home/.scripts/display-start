@@ -1,0 +1,67 @@
+#!/bin/bash
+
+function rmxmon {
+    while read i; do
+        bspc monitor $i -a dummy
+        bspc query --desktops --monitor $i --names \
+            | xargs -I{} sh -c "echo {}; [[ {} == 'dummy' ]] || bspc desktop {} -m $1"
+        bspc monitor $i -r
+        xrandr --output $i --off
+    done
+}
+
+function deskpref {
+    for i in $2; do
+        if echo "$monitors" | grep "$i"; then
+            bspc desktop $1 -m $i
+            return
+        fi
+    done
+    bspc desktop $1 -m "eDP-1"
+}
+
+
+monitors=$(xrandr --query | grep -sw "connected" | cut -d' ' -f1)
+if cat /proc/acpi/button/lid/LID/state | grep -qsw "open"; then
+    # Lid open, multi monitor or laptop
+
+    # Remove monitors
+    xrandr --query \
+        | grep -sw "disconnected" | grep -sP "\d+x\d+[+-]\d+[+-]\d+" \
+        | cut -d' ' -f1 \
+        | rmxmon "eDP-1"
+
+    echo "$monitors" | xargs -I{} xrandr --output {} --mode 1920x1080
+
+    xrandr --output "eDP-1" --primary
+
+    # Set up desktops, move outputs
+    if [[ $(echo "$monitors" | wc -l) -ne  1 ]]; then
+        deskpref "I"    "HDMI-1"
+        deskpref "II"   "DP-2"
+        deskpref "III"  "eDP-1"
+        deskpref "IV"   "HDMI-1 DP-2"
+        deskpref "V"    "DP-2"
+        xrandr --output "DP-2" --right-of "eDP-1"
+        xrandr --output "HDMI-1" --left-of "eDP-1"
+    fi
+
+    primary="eDP-1"
+
+else #closed, single external monitor
+
+    if echo "$monitors" | grep -q "DP-2"; then
+        primary="DP-2"
+    elif echo "$monitors" | grep -q "HDMI-1"; then
+        primary="HDMI-1"
+    else
+        primary="eDP-1"
+    fi
+
+    xrandr --output $primary --primary --mode 1920x1080
+    echo "$monitors" \
+        | sed "/$primary/d" \
+        | rmxmon $primary
+fi
+
+echo "$monitors" | sed "/$primary/ s/$/#/"
