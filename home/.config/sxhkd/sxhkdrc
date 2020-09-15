@@ -23,7 +23,7 @@ super + {shift,alt} + r
 #
 
 # close and kill
-super + {_,shift + }w
+super + {shift, alt} + w
     bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
@@ -49,10 +49,6 @@ super + {t,shift + t,s,f}
 super + shift + s
     bspc node -g sticky
 
-# set the node flags
-super + ctrl + {m,x,y,z}
-    bspc node -g {marked,locked,sticky,private}
-
 #
 # focus/swap
 #
@@ -67,7 +63,7 @@ super + {p,b,comma,period}
 
 # focus the next/previous node in the current desktop
 super + {_,shift + }c
-    bspc node -f {next,prev}.local.!sticky
+    bspc node -f {next,prev}.local.leaf.!sticky
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
@@ -97,9 +93,21 @@ super + {_,shift + }{1,2,3,4,5,6,7,8,9,0}
     bspc {desktop -f,node -d} '{I,II,III,IV,V,VI,VII,VIII,IX,X}' &&\
     xdotool mousemove --screen $SCREEN $X $Y
 
+# power chords
+super + Escape ; {l,s,h, shift + r, shift + s, shift + e}
+    {lock.sh, lock.sh & (sleep 1 && systemctl suspend), lock.sh & (sleep 1 && systemctl hibernate), systemctl reboot, systemctl poweroff -i, rm /tmp/bspwm-startup.lock; bspc quit; killall Xwayland}
+
+super + d ; {h,j,k,l}
+    bspc desktop -m {west,south,north,east}
+
+
 #
 # preselect
 #
+
+# rotate
+super + {q,e}
+    bspc node first_ancestor -R {270,90}
 
 # preselect the direction
 super + ctrl + {h,j,k,l}
@@ -117,6 +125,11 @@ super + ctrl + space
 super + ctrl + shift + space
     bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
+# set the node flags
+super + ctrl + {m,x,y,z}
+    bspc node -g {marked,locked,sticky,private}
+
+
 #
 # move/resize
 #
@@ -131,10 +144,6 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
     bspc node -v {-20 0,0 20,0 -20,20 0}
-
-# power chords
-super + Escape ; {l,s,h, shift + r, shift + s, shift + e}
-    {lock.sh, lock.sh & (sleep 1 && systemctl suspend), lock.sh & (sleep 1 && systemctl hibernate), systemctl reboot, systemctl poweroff -i, rm /tmp/bspwm-startup.lock; bspc quit; killall Xwayland}
 
 # screenshots
 {_, super, shift} + @Print

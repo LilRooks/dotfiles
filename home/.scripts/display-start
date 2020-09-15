@@ -4,7 +4,7 @@ function rmxmon {
     while read i; do
         bspc monitor $i -a dummy
         bspc query --desktops --monitor $i --names \
-            | xargs -I{} sh -c "echo {}; [[ {} == 'dummy' ]] || bspc desktop {} -m $1"
+            | xargs -I{} sh -c "[[ {} == 'dummy' ]] || bspc desktop {} -m $1"
         bspc monitor $i -r
         xrandr --output $i --off
     done
@@ -12,7 +12,7 @@ function rmxmon {
 
 function deskpref {
     for i in $2; do
-        if echo "$monitors" | grep "$i"; then
+        if echo "$monitors" | grep "$i" >/dev/null; then
             bspc desktop $1 -m $i
             return
         fi
@@ -37,8 +37,8 @@ if cat /proc/acpi/button/lid/LID/state | grep -qsw "open"; then
 
     # Set up desktops, move outputs
     if [[ $(echo "$monitors" | wc -l) -ne  1 ]]; then
-        deskpref "I"    "HDMI-1"
-        deskpref "II"   "DP-2"
+        deskpref "I"    "DP-2"
+        deskpref "II"   "HDMI-1 DP-2"
         deskpref "III"  "eDP-1"
         deskpref "IV"   "HDMI-1 DP-2"
         deskpref "V"    "DP-2"
@@ -64,4 +64,5 @@ else #closed, single external monitor
         | rmxmon $primary
 fi
 
-echo "$monitors" | sed "/$primary/ s/$/#/"
+echo "$primary"
+#echo "$monitors" | sed "/$primary/ s/$/#/"

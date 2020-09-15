@@ -14,7 +14,7 @@ if [ ! -f /tmp/bspwm-startup.lock ]; then
     bspc monitor "eDP-1" -d I II III IV V
 fi
 
-display-start
+primary=$(display-start)
 
 bspc config border_width              2
 bspc config window_gap                50
@@ -48,6 +48,7 @@ startup_lock_file=/tmp/bspwm-startup.lock
 if [ ! -f $startup_lock_file ]; then
     touch $startup_lock_file
 
+    feh --bg-fill .wallpapers/arch-hero.png
     #urxvt -geometry 33x12-25-63 -name 'stick' -bg "[30]#06060a" -e cava &
     #urxvt -geometry 33x12-25-63 -name 'below' -bg "[58]#06060a" -e cmatrix &
     kdeconnect-indicator &
@@ -55,10 +56,11 @@ if [ ! -f $startup_lock_file ]; then
     udiskie --tray -A &
 	picom -f -D 5 &
 	xfce4-clipman &
-	#redshift-gtk &
+	redshift-gtk &
     blueman-applet &
 	nm-applet &
-	#dunst &
+    fcitx &
+	dunst &
     conky &
 fi
 polybar-start

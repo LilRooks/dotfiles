@@ -28,6 +28,8 @@ bindkey '^R' history-incremental-search-backward
 
 export PATH=$PATH:~/.scripts-local:~/.scripts
 export EDITOR=vim
+export PAGER=vimpager
+alias less=$PAGER
 AUTO_LS_COMMANDS=(ls)
 #export HISTFILE=$HOME/.zsh_history
 #export SAVEHIST=200
