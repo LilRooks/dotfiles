@@ -12,6 +12,7 @@ set showcmd
 set incsearch
 set hlsearch
 set spelllang=en_US
+set encoding=UTF-8
 set tabstop=4
 set shiftwidth=4
 set softtabstop=0 expandtab smarttab
@@ -56,6 +57,7 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
+Plugin 'ryanoasis/vim-devicons'
 " --- Vim as a programmer's text editor ---
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -72,6 +74,7 @@ Plugin 'itchyny/vim-haskell-indent'
 Plugin 'matchit.zip'
 Plugin 'yggdroot/indentline'
 Plugin 'ajh17/vimcompletesme'
+Plugin '907th/vim-auto-save'
 " --- Git Sh!t ---
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
@@ -167,3 +170,7 @@ augroup END
 " --- plasticboy/vim-markdown ---
 let g:vim_markdown_folding_disabled = 1
 let g:polyglot_disabled = ['latex']
+
+" --- vim-auto-save
+let g:auto_save_events = ["CursorHold","CursorHoldI"]
+set updatetime=1000

@@ -11,10 +11,14 @@ setxkbmap -variant mac -option 'caps:swapescape,compose:rctrl'
 sxhkd &
 
 if [ ! -f /tmp/bspwm-startup.lock ]; then
-    bspc monitor "eDP-1" -d I II III IV V
+    bspc monitor "eDP-1" -d I II III IV V VI
 fi
 
 primary=$(display-start)
+
+xsetwacom set "Wacom Intuos S 2 Pen stylus" Button 2 "key +ctrl z -ctrl"
+xsetwacom set "Wacom Intuos S 2 Pen stylus" MapToOutput eDP-1
+xsetwacom set "Wacom Intuos S 2 Pad pad" MapToOutput eDP-1
 
 bspc config border_width              2
 bspc config window_gap                50
@@ -31,15 +35,17 @@ bspc rule -a firefox desktop='II'
 bspc rule -a \*:ws3 desktop='III'
 
 bspc rule -a Steam desktop='IV' follow=on
-bspc rule -a Gimp desktop='IV' follow=on
+bspc rule -a Gimp desktop='V' follow=on
+bspc rule -a Xournalpp desktop='V'
+bspc rule -a zoom desktop='VI'
 
-bspc rule -a Thunderbird desktop='V'
+bspc rule -a Thunderbird desktop='VII'
 
 bspc rule -a Lxappearance state=floating
 bspc rule -a \*:stick state=floating layer=normal sticky=on
 bspc rule -a \*:above state=floating layer=above sticky=on
 bspc rule -a \*:below state=floating layer=below sticky=on 
-bspc rule -a firefox:Toolkit sticky=on
+bspc rule -a firefox:Toolkit state=floating sticky=on
 
 ~/.scripts/bspwm_steam
 
@@ -52,16 +58,18 @@ if [ ! -f $startup_lock_file ]; then
     #urxvt -geometry 33x12-25-63 -name 'stick' -bg "[30]#06060a" -e cava &
     #urxvt -geometry 33x12-25-63 -name 'below' -bg "[58]#06060a" -e cmatrix &
     kdeconnect-indicator &
+    /usr/lib/kdeconnectd &
 	$BTERM -name 'ws3' &
     udiskie --tray -A &
+    blueman-applet &
 	picom -f -D 5 &
 	xfce4-clipman &
 	redshift-gtk &
-    blueman-applet &
 	nm-applet &
     fcitx &
 	dunst &
     conky &
 fi
 polybar-start
+conky-start
 sleep 2 && gifbg-start
