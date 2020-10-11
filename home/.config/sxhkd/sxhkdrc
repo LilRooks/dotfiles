@@ -146,8 +146,8 @@ super + {Left,Down,Up,Right}
     bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # screenshots
-{_, super, shift} + @Print
-    xfce4-screenshooter -{f,w,r}
+{_, shift} + @Print
+    maim {-oBb,-sob} 3 | xclip -i -selection clipboard -t image/png
 
 control + {_, super +} @Print
     screencast{_,  -draw_mouse 0}

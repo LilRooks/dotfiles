@@ -11,7 +11,7 @@ cursor_blink = off
 foreground = #d1d1d1
 
 # 20% background transparency (requires a compositor)
-background = rgba(6, 6, 10, 0.8)
+background = rgba(6, 6, 10, 0.7)
 
 # 8 normal colors
 color0 = #272822
