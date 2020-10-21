@@ -16,7 +16,8 @@ source $ROOT/usr/bin/virtualenvwrapper.sh
 source $HOME/antigen.zsh
 #antigen bundle ssh-agent
 antigen theme romkatv/powerlevel10k
-antigen bundle robbyrussell/oh-my-zsh lib/
+antigen bundle ohmyzsh/ohmyzsh lib/
+antigen bundle ohmyzsh/ohmyzsh plugins/rbenv/
 antigen bundle desyncr/auto-ls
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting

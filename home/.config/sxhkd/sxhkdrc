@@ -147,7 +147,7 @@ super + {Left,Down,Up,Right}
 
 # screenshots
 {_, shift} + @Print
-    maim {-oBb,-sob} 3 | xclip -i -selection clipboard -t image/png
+    maim {-ouBb,-soub} 1 | xclip -i -selection clipboard -t image/png
 
 control + {_, super +} @Print
     screencast{_,  -draw_mouse 0}
