@@ -19,4 +19,5 @@ else
   polybar bottom &
 fi
 
+killall xembedsniproxy
 echo "Bars launched..."

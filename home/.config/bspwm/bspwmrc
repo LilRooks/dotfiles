@@ -14,7 +14,11 @@ if [ ! -f /tmp/bspwm-startup.lock ]; then
     bspc monitor "eDP-1" -d I II III IV V VI
 fi
 
-primary=$(display-start)
+if [[ "$HOST" == "alexander" ]]; then
+    display-start-alexander
+else
+    primary=$(display-start)
+fi
 
 xsetwacom set "Wacom Intuos S 2 Pen stylus" Button 2 "key +ctrl z -ctrl"
 xsetwacom set "Wacom Intuos S 2 Pen stylus" MapToOutput eDP-1
@@ -45,6 +49,7 @@ bspc rule -a Lxappearance state=floating
 bspc rule -a \*:stick state=floating layer=normal sticky=on
 bspc rule -a \*:above state=floating layer=above sticky=on
 bspc rule -a \*:below state=floating layer=below sticky=on 
+bspc rule -a plasma.emojier  state=floating sticky=on
 bspc rule -a firefox:Toolkit state=floating sticky=on
 
 ~/.scripts/bspwm_steam

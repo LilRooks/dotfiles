@@ -12,7 +12,7 @@ super + Return
 
 # program launcher
 super + space
-    dmenu_run_history
+    krunner
 
 # make sxhkd reload its configuration files:
 super + {shift,alt} + r
@@ -147,7 +147,7 @@ super + {Left,Down,Up,Right}
 
 # screenshots
 {_, shift} + @Print
-    maim {-ouBb,-soub} 1 | xclip -i -selection clipboard -t image/png
+   maim -{s,}ouBb 1 | xclip -i -selection clipboard -t image/png 
 
 control + {_, super +} @Print
     screencast{_,  -draw_mouse 0}
