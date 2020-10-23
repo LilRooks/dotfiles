@@ -19,6 +19,7 @@ antigen theme romkatv/powerlevel10k
 antigen bundle ohmyzsh/ohmyzsh lib/
 antigen bundle ohmyzsh/ohmyzsh plugins/rbenv/
 antigen bundle desyncr/auto-ls
+antigen bundle lukechilds/zsh-nvm
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
