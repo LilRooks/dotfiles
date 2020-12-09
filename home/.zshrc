@@ -36,6 +36,7 @@ AUTO_LS_COMMANDS=(ls)
 #export HISTFILE=$HOME/.zsh_history
 #export SAVEHIST=200
 
+setopt share_history
 autoload -Uz compinit
 compinit
 

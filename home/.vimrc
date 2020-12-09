@@ -42,6 +42,7 @@ inoremap <leader>con <esc>Iconsole.log(<esc>A);
 vnoremap <leader>con yOconsole.log(<esc>pA);
 set listchars=tab:\|\ 
 
+let g:polyglot_disabled = ['latex']
 " --- Vundle Bundle ---
 filetype off
 
@@ -169,7 +170,6 @@ augroup END
 
 " --- plasticboy/vim-markdown ---
 let g:vim_markdown_folding_disabled = 1
-let g:polyglot_disabled = ['latex']
 
 " --- vim-auto-save
 let g:auto_save_events = ["CursorHold","CursorHoldI"]
