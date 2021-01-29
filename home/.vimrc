@@ -16,10 +16,10 @@ set encoding=UTF-8
 set tabstop=4
 set shiftwidth=4
 set softtabstop=0 expandtab smarttab
+set mouse=a
 
 syntax on
 
-set mouse=a
 
 "Need this for plugins like Syntastic and vim-gitgutter
 " which put symbols in the sign column
@@ -53,12 +53,14 @@ Plugin 'VundleVim/Vundle.vim'
 
 " --- Make Vim look good ---
 Plugin 'tomasr/molokai'
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'arcticicestudio/nord-vim'
+Plugin 'morhetz/gruvbox'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'ryanoasis/vim-devicons'
+Plugin 'kjwon15/vim-transparent'
 " --- Vim as a programmer's text editor ---
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -86,13 +88,13 @@ filetype plugin indent on
 
 " --- Plugin-Specific Settings ---
 
-" --- altercation/vim-colors-solarized settings ---
+" --- colorscheme settings ---
 " Toggle this to "light" for light colorscheme
-"set background=dark
+set background=dark
 " Uncomment the next line if terminal is not configured for solarized
 "let g:solarized_termcolors=256
 " Set the colorscheme
-colorscheme molokai
+autocmd vimenter * ++nested colorscheme gruvbox
 
 
 " --- bling/vim-airline settings ---
@@ -106,7 +108,7 @@ let g:airline_detect_paste=1
 " Show airline for tabs too
 let g:airline#extensions#tabline#enabled = 1
 " Use the solarized theme for the Airline status bar
-let g:airline_theme='molokai'
+let g:airline_theme='gruvbox'
 
 
 " --- edkolev/tmuxline.vim settings ---

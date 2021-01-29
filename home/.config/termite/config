@@ -7,28 +7,91 @@ font = UbuntuMono Nerd Font 12
 scrollback_lines = 10000
 cursor_blink = off
 
+#[colors]
+#foreground = #d1d1d1
+#
+## 20% background transparency (requires a compositor)
+#background = rgba(6, 6, 10, 0.6)
+#
+## 8 normal colors
+#color0 = #272822
+#color1 = #f92672
+#color2 = #a6e22e
+#color3 = #f4bf75
+#color4 = #66d9ef
+#color5 = #ae81ff
+#color6 = #a1efe4
+#color7 = #f8f8f2
+## 8 bright colors
+#color8 = #75715e
+#color9 = #f92672
+#color10 = #a6e22e
+#color11 = #f4bf75
+#color12 = #66d9ef
+#color13 = #ae81ff
+#color14 = #a1efe4
+#color15 = #f9f8f5
+
 [colors]
-foreground = #d1d1d1
+# hard contrast: background = #1d2021
+background = rgba(40,40,40,0.8)
+# soft contrast: background = #32302f
+foreground = #ebdbb2
+foreground_bold = #ebdbb2
 
-# 20% background transparency (requires a compositor)
-background = rgba(6, 6, 10, 0.6)
+# dark0 + gray
+color0 = #282828
+color8 = #928374
 
-# 8 normal colors
-color0 = #272822
-color1 = #f92672
-color2 = #a6e22e
-color3 = #f4bf75
-color4 = #66d9ef
-color5 = #ae81ff
-color6 = #a1efe4
-color7 = #f8f8f2
-# 8 bright colors
-color8 = #75715e
-color9 = #f92672
-color10 = #a6e22e
-color11 = #f4bf75
-color12 = #66d9ef
-color13 = #ae81ff
-color14 = #a1efe4
-color15 = #f9f8f5
+# neutral_red + bright_red
+color1 = #cc241d
+color9 = #fb4934
+
+# neutral_green + bright_green
+color2 = #98971a
+color10 = #b8bb26
+
+# neutral_yellow + bright_yellow
+color3 = #d79921
+color11 = #fabd2f
+
+# neutral_blue + bright_blue
+color4 = #458588
+color12 = #83a598
+
+# neutral_purple + bright_purple
+color5 = #b16286
+color13 = #d3869b
+
+# neutral_aqua + faded_aqua
+color6 = #689d6a
+color14 = #8ec07c
+
+# light4 + light1
+color7 = #a89984
+color15 = #ebdbb2
+
+#foreground = #D8DEE9
+#background = rgba(46, 52,64, 0.7)
+#foreground_bold = #D8DEE9
+#cursor = #D8DEE9
+#cursor_foreground = #2E3440
+#highlight = #4C566A
+#
+#color0  = #3B4252
+#color1  = #BF616A
+#color2  = #A3BE8C
+#color3  = #EBCB8B
+#color4  = #81A1C1
+#color5  = #B48EAD
+#color6  = #88C0D0
+#color7  = #E5E9F0
+#color8  = #4C566A
+#color9  = #BF616A
+#color10 = #A3BE8C
+#color11 = #EBCB8B
+#color12 = #81A1C1
+#color13 = #B48EAD
+#color14 = #8FBCBB
+#color15 = #ECEFF4
 # vim: ft=dosini cms=#%s

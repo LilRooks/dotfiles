@@ -12,7 +12,7 @@ super + Return
 
 # program launcher
 super + space
-    ~/.scripts/dmenu_run_history
+    rofi -show run
 
     #krunner
 
