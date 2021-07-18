@@ -1,5 +1,7 @@
 eval $(keychain --eval --quiet id_ed25519 id_rsa)
-fortune ~/.scripts/anti-jokes ~/.scripts/ascii-art | cowthink -f ~/.scripts/blank.cow -n | lolcat
+fortune ~/.scripts/anti-jokes ~/.scripts/ascii-art \
+| cowthink -f ~/.scripts/blank.cow -n \
+| lolcat
 ~/.scripts/glace
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -28,9 +30,10 @@ antigen apply
 bindkey -v
 bindkey '^R' history-incremental-search-backward
 
+export TERM=xterm-256color
+
 export PATH=$PATH:~/.scripts-local:~/.scripts
 export EDITOR=vim
-export PAGER=vimpager
 alias less=$PAGER
 AUTO_LS_COMMANDS=(ls)
 #export HISTFILE=$HOME/.zsh_history

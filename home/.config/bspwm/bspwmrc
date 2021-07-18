@@ -10,6 +10,11 @@ setxkbmap -variant mac -option 'caps:swapescape,compose:rctrl'
 
 sxhkd &
 
+xrandr --output HDMI-A-4 --right-of DVI-D-0 --output DVI-D-0 --primary
+bspc monitor HDMI-A-4 -d IV V VI && bspc monitor DVI-D-0 -d I II III
+bspc config -m HDMI-A-4 right_padding 0
+feh --bg-fill .wallpapers/parts-01.png --bg-fill .wallpapers/parts-00.png
+
 if [ ! -f /tmp/bspwm-startup.lock ]; then
     bspc monitor "eDP-1" -d I II III IV V VI
 fi
@@ -48,7 +53,7 @@ bspc rule -a Thunderbird desktop='VII'
 bspc rule -a Lxappearance state=floating
 bspc rule -a \*:stick state=floating layer=normal sticky=on
 bspc rule -a \*:above state=floating layer=above sticky=on
-bspc rule -a \*:below state=floating layer=below sticky=on 
+bspc rule -a \*:below state=floating layer=below sticky=on
 bspc rule -a plasma.emojier  state=floating sticky=on
 bspc rule -a firefox:Toolkit state=floating sticky=on
 
@@ -64,15 +69,17 @@ if [ ! -f $startup_lock_file ]; then
     #urxvt -geometry 33x12-25-63 -name 'below' -bg "[58]#06060a" -e cmatrix &
     kdeconnect-indicator &
     /usr/lib/kdeconnectd &
-	$BTERM -name 'ws3' &
+    termite &
+    $BTERM -name 'ws3' &
     udiskie --tray -A &
     blueman-applet &
-	picom --experimental-backend --backend glx --corner-radius 20 --blur-method dual_kawase --blur-strength 10 -f -D 5 --round-borders 1 &
-	redshift-gtk &
-	nm-applet &
-    klipper &
+    picom --experimental-backend --backend glx --corner-radius 15 --blur-method dual_kawase --blur-strength 10 -f -D 5 --round-borders 1 &
+    redshift-gtk &
+    nm-applet &
+    xfce4-clipman &
+    lxsession &
     fcitx &
-	dunst &
+    dunst &
     conky &
 fi
 polybar-start

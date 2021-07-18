@@ -14,4 +14,4 @@ export XMODIFIERS=@im=fcitx
 #xinput --disable 'AlpsPS/2 ALPS DualPoint TouchPad'
 #setxkbmap -variant mac -option 'caps:swapescape,compose:rctrl'
 
-exec $@
+exec dbus-launch --sh-syntax --exit-with-session $@

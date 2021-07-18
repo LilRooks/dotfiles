@@ -109,7 +109,7 @@ super + d ; {h,j,k,l}
 
 # rotate
 super + {q,e}
-    bspc node first_ancestor -R {270,90}
+    bspc node @parent -R {270,90}
 
 # preselect the direction
 super + ctrl + {h,j,k,l}
@@ -149,10 +149,10 @@ super + {Left,Down,Up,Right}
 
 # screenshots
 {_, shift} + @Print
-   maim -{s,}ouBb 1 | xclip -i -selection clipboard -t image/png 
+   maim -Bu{sb 1 -t 5,_} | xclip -i -selection clipboard -t image/png 
 
-control + {_, super +} @Print
-    screencast{_,  -draw_mouse 0}
+control + @Print
+    screencast
 
 control + shift + @Print
     pkill -f x11grab
