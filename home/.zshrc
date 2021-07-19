@@ -1,6 +1,14 @@
-eval $(keychain --eval --quiet id_ed25519 id_rsa)
-fortune ~/.scripts/anti-jokes ~/.scripts/ascii-art | cowthink -f ~/.scripts/blank.cow -n | lolcat
-~/.scripts/glace
+eval $(keychain --eval --quiet id_ed25519)
+if [ $(($RANDOM%2)) -eq 1 ]; then
+  fortune ~/.scripts-local/glacetune | cowthink -f ~/.scripts/blank.cow -n | lolcat
+  ~/.scripts/glace
+else
+  fortune ~/.scripts-local/eeveetune | cowthink -f ~/.scripts/blank.cow -n | lolcat
+  ~/.scripts/amu
+fi
+
+#fortune ~/.scripts/anti-jokes ~/.scripts/ascii-art | cowthink -f ~/.scripts/blank.cow -n | lolcat
+#~/.scripts/glace
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -32,6 +40,8 @@ export PATH=$PATH:~/.scripts-local:~/.scripts
 export EDITOR=vim
 export PAGER=vimpager
 alias less=$PAGER
+alias run-wine='WINEPREFIX=$PWD/.wine wine'
+
 AUTO_LS_COMMANDS=(ls)
 #export HISTFILE=$HOME/.zsh_history
 #export SAVEHIST=200
@@ -41,4 +51,8 @@ autoload -Uz compinit
 compinit
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+if [[ "$TERM" == "linux"* ]]; then
+  [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+else
+  [[ ! -f ~/.p10k.glyph.zsh ]] || source ~/.p10k.glyph.zsh
+fi

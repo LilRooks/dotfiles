@@ -11,8 +11,8 @@ super + Return
     termite
 
 # program launcher
-super + space
-    rofi -show run
+super + {_,shift +} space
+    rofi -show {run,drun}
 
     #krunner
 
@@ -110,6 +110,8 @@ super + d ; {h,j,k,l}
 # rotate
 super + {q,e}
     bspc node first_ancestor -R {270,90}
+super + shift + e
+    splatmoji type
 
 # preselect the direction
 super + ctrl + {h,j,k,l}
@@ -149,7 +151,7 @@ super + {Left,Down,Up,Right}
 
 # screenshots
 {_, shift} + @Print
-   maim -{s,}ouBb 1 | xclip -i -selection clipboard -t image/png 
+   maim {-souBb 1,_} | xclip -i -selection clipboard -t image/png 
 
 control + {_, super +} @Print
     screencast{_,  -draw_mouse 0}
