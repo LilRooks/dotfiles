@@ -54,7 +54,7 @@ Plugin 'VundleVim/Vundle.vim'
 " --- Make Vim look good ---
 Plugin 'tomasr/molokai'
 Plugin 'arcticicestudio/nord-vim'
-Plugin 'morhetz/gruvbox'
+Plugin 'lifepillar/gruvbox8'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -62,6 +62,7 @@ Plugin 'edkolev/tmuxline.vim'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'kjwon15/vim-transparent'
 " --- Vim as a programmer's text editor ---
+Plugin 'wlangstroth/vim-racket'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'vim-syntastic/syntastic'
@@ -94,7 +95,7 @@ set background=dark
 " Uncomment the next line if terminal is not configured for solarized
 "let g:solarized_termcolors=256
 " Set the colorscheme
-autocmd vimenter * ++nested colorscheme gruvbox
+autocmd vimenter * ++nested colorscheme gruvbox8
 
 
 " --- bling/vim-airline settings ---
@@ -108,7 +109,7 @@ let g:airline_detect_paste=1
 " Show airline for tabs too
 let g:airline#extensions#tabline#enabled = 1
 " Use the solarized theme for the Airline status bar
-let g:airline_theme='gruvbox'
+let g:airline_theme='gruvbox8'
 
 
 " --- edkolev/tmuxline.vim settings ---
@@ -130,6 +131,15 @@ nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
 
 
 " --- scrooloose/syntastic settings ---
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 let g:syntastic_error_symbol = '✘'
 let g:syntastic_warning_symbol = "▲"
 augroup mySyntastic
@@ -137,6 +147,8 @@ augroup mySyntastic
     au FileType tex let b:syntastic_mode = "passive"
 augroup END
 
+let g:syntastic_racket_code_ayatollah_script = "/home/zant/.scripts-local/code-ayatollah.rkt"
+let g:syntastic_racket_checkers = ['code_ayatollah']
 
 " --- xolox/vim-easytags settings ---
 " Where to look for tags files
