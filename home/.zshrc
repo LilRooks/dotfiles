@@ -36,9 +36,10 @@ antigen apply
 bindkey -v
 bindkey '^R' history-incremental-search-backward
 
+export TERM=xterm-256color
+
 export PATH=$PATH:~/.scripts-local:~/.scripts
 export EDITOR=vim
-export PAGER=vimpager
 alias less=$PAGER
 alias run-wine='WINEPREFIX=$PWD/.wine wine'
 

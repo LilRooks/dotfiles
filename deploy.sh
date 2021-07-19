@@ -37,6 +37,5 @@ cp $PWD/home/.local/share/fonts/* ~/.local/share/fonts
 ln -sv $PWD/home/.* ~/
 ln -sv $PWD/home/.config/* ~/.config/
 ln -sv $PWD/home/.ssh/* ~/.ssh/
-ln -sv $PWD/home/.oh-my-zsh/* ~/.oh-my-zsh/
 
 vim +PluginInstall +qall

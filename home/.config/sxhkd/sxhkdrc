@@ -151,10 +151,10 @@ super + {Left,Down,Up,Right}
 
 # screenshots
 {_, shift} + @Print
-   maim {-souBb 1,_} | xclip -i -selection clipboard -t image/png 
+   maim -Bu{sb 1 -t 5,_} | xclip -i -selection clipboard -t image/png 
 
-control + {_, super +} @Print
-    screencast{_,  -draw_mouse 0}
+control + @Print
+    screencast
 
 control + shift + @Print
     pkill -f x11grab
