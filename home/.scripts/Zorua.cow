@@ -1,0 +1,41 @@
+# zorua
+# by amu!
+# Generated with Charc0al's cowsay file converter http://charc0al.github.io/cowsay-files/converter
+
+$x = "\e[49m  ";          #reset color
+$t = "$thoughts ";
+$a = "\e[48;5;125m  ";
+$b = "\e[48;5;53m  ";
+$c = "\e[48;5;241m  ";
+$d = "\e[48;5;238m  ";
+$e = "\e[48;5;255m  ";
+$f = "\e[48;5;37m  ";
+$g = "\e[48;5;235m  ";
+$h = "\e[48;5;237m  ";
+
+$the_cow = <<EOC
+          $t
+
+              $a$x$a$x
+            $a      $x
+            $a        $x
+          $b$a$b$c$a$b$x
+      $d$x$c$b  $c$b$c$x
+      $d$x$d$b$c      $x
+      $d$x$d  $c    $x$c          $x
+    $d$x$d$x$d$c  $d$x$d$x    $c$x
+      $b$c$a$c$a$c      $x$c$d$x
+    $c$a$b$c    $b$a$c    $d$x
+    $d$e$c      $a$f$c  $d$g$x
+      $f$c      $e$f$c  $d  $x$g$x
+      $c        $f  $c$d$x  $g  $x
+      $h$c          $d$x$g    $x$d$x
+        $d        $x  $g      $x$d$c  $x
+    $a$b$x          $g      $x  $d$c  $x
+          $g$x$b$a$b$g    $x$d$x  $d$c$x
+          $g  $x$b$g  $x  $d  $x    $c$x
+                        $d  $c$x
+                  $a$b$x  $d$b$x
+                          $a$b$x
+
+EOC

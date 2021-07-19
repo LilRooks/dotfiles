@@ -39,6 +39,8 @@ export TERM=xterm-256color
 export PATH=$PATH:~/.scripts-local:~/.scripts
 export EDITOR=vim
 alias less=$PAGER
+alias run-wine='WINEPREFIX=$PWD/.wine wine'
+
 AUTO_LS_COMMANDS=(ls)
 #export HISTFILE=$HOME/.zsh_history
 #export SAVEHIST=200
@@ -48,4 +50,8 @@ autoload -Uz compinit
 compinit
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+if [[ "$TERM" == "linux"* ]]; then
+  [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+else
+  [[ ! -f ~/.p10k.glyph.zsh ]] || source ~/.p10k.glyph.zsh
+fi

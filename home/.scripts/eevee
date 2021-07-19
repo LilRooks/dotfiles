@@ -1,0 +1,36 @@
+#!/bin/bash
+# eevee
+# by Amu
+# Generated with Charc0al's cowsay file converter http://charc0al.github.io/cowsay-files/converter
+
+x="\e[49m  ";          #reset color
+t="$thoughts ";
+a="\e[48;5;130m  ";
+b="\e[48;5;172m  ";
+c="\e[48;5;94m  ";
+d="\e[48;5;231m  ";
+e="\e[48;5;136m  ";
+f="\e[48;5;179m  ";
+g="\e[48;5;229m  ";
+
+#$the_cow = <<EOC
+echo -e "\
+                  $a$b$a$x
+              $c$a    $x
+          $c$a$b  $c$x
+        $c$a$b      $a$c$a$b  $a$x
+        $a$b          $a$c    $b  $a$x
+        $c$b  $d$x$b  $c$a$b$a$c$a$x
+      $c$a$b  $x  $b  $a$x
+      $a$x$b  $c$x$b$a$c$e$f$x
+      $c$b        $a  $c$f$e$x$a  $c$x
+        $c$a$b  $a$c$x$f    $x$c$a$b$a$x
+    $a$c$x          $g  $f$c$x  $a$b  $x
+          $e$x$a$b$c$g$f$e$x$c$x$a  $b$f$x
+        $f$g$e$x$c$e  $x  $c  $x$c$e$f$g$x
+          $e$f$e$x      $c$a  $x    $e$f$x
+                  $a$c$x  $b$a$x
+                          $b$c$x
+                                            "
+
+#EOC
