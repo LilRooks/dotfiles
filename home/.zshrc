@@ -1,4 +1,5 @@
-eval $(keychain --eval --quiet id_ed25519 id_rsa)
+GUIX_PROFILE="$HOME/.guix-profile"
+[[ -f $GUIX_PROFILE/etc/profile ]] && source $GUIX_PROFILE/etc/profile
 fortune ~/.scripts/anti-jokes ~/.scripts/ascii-art \
 | cowthink -f ~/.scripts/blank.cow -n \
 | lolcat
@@ -11,9 +12,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-[[ -d /data/data/com.termux ]] && ROOT=/data/data/com.termux/files
+vewdir=/usr/bin
+[[ -d /data/data/com.termux ]] && vewdir=/data/data/com.termux/files/bin
+[[ -d $GUIX_PROFILE/bin ]] && vewdir=~/.local/bin
+
 export WORKON_HOME=~/Envs
-source $ROOT/usr/bin/virtualenvwrapper.sh
+VIRTUALENVWRAPPER_PYTHON=python3 source $vewdir/virtualenvwrapper.sh
 
 source $HOME/antigen.zsh
 #antigen bundle ssh-agent

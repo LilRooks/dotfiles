@@ -69,7 +69,6 @@ if [ ! -f $startup_lock_file ]; then
     #urxvt -geometry 33x12-25-63 -name 'below' -bg "[58]#06060a" -e cmatrix &
     kdeconnect-indicator &
     /usr/lib/kdeconnectd &
-    termite &
     $BTERM -name 'ws3' &
     udiskie --tray -A &
     blueman-applet &
