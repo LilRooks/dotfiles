@@ -17,7 +17,8 @@ vewdir=/usr/bin
 [[ -d $GUIX_PROFILE/bin ]] && vewdir=~/.local/bin
 
 export WORKON_HOME=~/Envs
-VIRTUALENVWRAPPER_PYTHON=python3 source $vewdir/virtualenvwrapper.sh
+export VIRTUALENVWRAPPER_PYTHON=python3
+source $vewdir/virtualenvwrapper.sh
 
 source $HOME/antigen.zsh
 #antigen bundle ssh-agent
@@ -34,9 +35,7 @@ antigen apply
 bindkey -v
 bindkey '^R' history-incremental-search-backward
 
-export TERM=xterm-256color
-
-export PATH=$PATH:~/.scripts-local:~/.scripts
+export PATH=$PATH:~/.local/bin:~/.scripts-local:~/.scripts
 export EDITOR=vim
 alias less=$PAGER
 alias run-wine='WINEPREFIX=$PWD/.wine wine'

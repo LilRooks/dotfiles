@@ -8,11 +8,11 @@ super + shift+ v
     wl-paste | xclip -i -selection clipboard
 # terminal emulator
 super + Return
-    termite
+    alacritty
 
 # program launcher
 super + {_,shift +} space
-    rofi -show {run,drun}
+    dbus-launch rofi -show {run,drun}
 
     #krunner
 
