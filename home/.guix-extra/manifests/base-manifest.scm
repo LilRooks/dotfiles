@@ -1,0 +1,10 @@
+(specifications->manifest
+  '("cowsay"
+    "curl"
+    "fontconfig"
+    "fortune-mod"
+    "git"
+    "lolcat"
+    "tmux"
+    "vim"
+    "wget"))

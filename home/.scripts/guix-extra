@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+[[ -e "$GUIX_EXTRA" ]] && exit
+
+[[ -d $GUIX_EXTRA_MANIFESTS ]] || mkdir $GUIX_EXTRA_MANIFESTS
+[[ -d $GUIX_EXTRA_PROFILES ]] || mkdir $GUIX_EXTRA_PROFILES
+[[ -d $GUIX_EXTRA_ENABLED ]] || mkdir $GUIX_EXTRA_ENABLED
+
+guix_extra_install_profile(){
+    guix package -m "$GUIX_EXTRA_MANIFESTS/$arg-manifest.scm" -p "$GUIX_EXTRA_PROFILES/$arg/profile"
+}
+
+cmd=$1
+arg=$2
+case $cmd in
+    upgrade)
+        if [[ -n "$arg" ]] && [[ -d "$GUIX_EXTRA_PROFILES/$arg" ]]; then
+            echo "upgrading $arg"
+            guix package --manifest="$GUIX_EXTRA_MANIFESTS/$arg-manifest.scm" --profile="$GUIX_EXTRA_PROFILES/$arg/profile"
+        else
+            echo "unknown or no arg, upgrading all enabled"
+            for profile in "$GUIX_EXTRA_ENABLED"/*; do
+                guix package --profile="$profile/profile" --manifest="$GUIX_EXTRA_MANIFESTS/$(basename $profile)-manifest.scm"
+            done
+        fi
+        ;;
+
+    enable)
+        echo "creating link ($GUIX_EXTRA_ENABLED/$arg -> $GUIX_EXTRA_PROFILES/$arg)"
+        ([[ -n $arg ]] && [[ -d "$GUIX_EXTRA_PROFILES/$arg" ]]) \
+            && ln -s "$GUIX_EXTRA_PROFILES/$arg" "$GUIX_EXTRA_ENABLED" \
+            || echo "unknown or no arg, nothing happened"
+        ;;
+
+    disable)
+        echo "deleting link ($GUIX_EXTRA_ENABLED/$arg)"
+        ([[ -n $arg ]] && [[ -d "$GUIX_EXTRA_ENABLED/$arg" ]]) \
+            && rm "$GUIX_EXTRA_ENABLED/$arg" \
+            || echo "unknown or no arg, nothing happened"
+        ;;
+    install)
+        name=$(basename $arg .scm)
+        if [[ -n "$arg" ]] && [[ ! -d "$GUIX_EXTRA_PROFILES/$name/profile" ]]; then
+            echo "making profile dir"
+            mkdir -p "$GUIX_EXTRA_PROFILES/$name/"
+
+            if [[ -f "$GUIX_EXTRA_MANIFESTS/$arg-manifest.scm" ]]; then
+                guix_extra_install_profile $arg
+            elif [[ -f "$arg" ]]; then
+                echo "copying manifest"
+                cp "$arg" "$GUIX_EXTRA_MANIFESTS/$name-manifest.scm"
+                guix_extra_install_profile $name
+            else
+                rm -rf $GUIX_EXTRA_PROFILES/$name
+                echo "invalid argument to $cmd"
+            fi
+        else
+            echo "no argument given or profile already exists"
+        fi
+        ;;
+
+    *)
+        echo "unknown command $arg"
+        ;;
+esac

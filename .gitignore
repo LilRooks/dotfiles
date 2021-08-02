@@ -2,3 +2,5 @@ tags
 *.db
 *.pickle
 local.zsh
+home/.guix-extra/profiles/**
+home/.guix-extra/enabled/*

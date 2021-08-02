@@ -1,4 +1,16 @@
 GUIX_PROFILE="$HOME/.guix-profile"
+GUIX_EXTRA="$HOME/.guix-extra"
+export GUIX_EXTRA_MANIFESTS="$GUIX_EXTRA/manifests"
+export GUIX_EXTRA_PROFILES="$GUIX_EXTRA/profiles"
+export GUIX_EXTRA_ENABLED="$GUIX_EXTRA/enabled"
+
+for i in $GUIX_EXTRA_ENABLED/*/profile; do
+  if [ -f "$i"/etc/profile ]; then
+    GUIX_PROFILE="$i"
+    . "$GUIX_PROFILE"/etc/profile
+  fi
+done
+
 [[ -f $GUIX_PROFILE/etc/profile ]] && source $GUIX_PROFILE/etc/profile
 fortune ~/.scripts/anti-jokes ~/.scripts/ascii-art \
 | cowthink -f ~/.scripts/blank.cow -n \
