@@ -1,17 +1,22 @@
-GUIX_PROFILE="$HOME/.guix-profile"
 GUIX_EXTRA="$HOME/.guix-extra"
 export GUIX_EXTRA_MANIFESTS="$GUIX_EXTRA/manifests"
 export GUIX_EXTRA_PROFILES="$GUIX_EXTRA/profiles"
 export GUIX_EXTRA_ENABLED="$GUIX_EXTRA/enabled"
+export DOTFILES_HOME="$(dirname $(dirname $(readlink ~/.zshrc)))"
 
-for i in $GUIX_EXTRA_ENABLED/*/profile; do
-  if [ -f "$i"/etc/profile ]; then
-    GUIX_PROFILE="$i"
-    . "$GUIX_PROFILE"/etc/profile
-  fi
-done
+if [[ -d $GUIX_EXTRA_ENABLED ]] && [[ ! -n "$(find $GUIX_EXTRA_ENABLED -maxdepth 0 -empty)" ]]; then
+  for i in $GUIX_EXTRA_ENABLED/*; do
+    profile="$(readlink "$i")/profile"
+    if [ -f "$profile"/etc/profile ]; then
+      GUIX_PROFILE="$profile"
+      . "$GUIX_PROFILE"/etc/profile
+    fi
+  done
+fi
 
+GUIX_PROFILE="$HOME/.guix-profile"
 [[ -f $GUIX_PROFILE/etc/profile ]] && source $GUIX_PROFILE/etc/profile
+
 fortune ~/.scripts/anti-jokes ~/.scripts/ascii-art \
 | cowthink -f ~/.scripts/blank.cow -n \
 | lolcat

@@ -1,5 +1,0 @@
-configuration {
-	modi: "window,run,drun";
-	show-icons: true;
-}
-@import "/home/zant/.guix-profile/share/rofi/themes/gruvbox-dark-hard.rasi"

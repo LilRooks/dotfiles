@@ -1,4 +1,5 @@
-#! /bin/sh
+#!/usr/bin/env zsh
+source ~/.zshrc
 export BTERM=alacritty
 ## test for an existing bus daemon, just to be safe
 if test -z "$DBUS_SESSION_BUS_ADDRESS" ; then

@@ -1,0 +1,12 @@
+(specifications->manifest
+  '("acpi"
+    "alsa-utils"
+    "bluez"
+    "bluez-alsa"
+    "cpulimit"
+    "cpupower"
+    "libva-utils"
+    "pulseaudio"
+    "thinkfan"
+    "vdpauinfo"
+    "zsh"))

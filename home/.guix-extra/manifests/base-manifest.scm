@@ -1,10 +1,13 @@
 (specifications->manifest
   '("cowsay"
     "curl"
+    "file"
+    "htop"
     "fontconfig"
     "fortune-mod"
     "git"
     "lolcat"
     "tmux"
-    "vim"
+    "trash-cli"
+    "vim-full"
     "wget"))

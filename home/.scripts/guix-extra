@@ -6,7 +6,10 @@
 [[ -d $GUIX_EXTRA_ENABLED ]] || mkdir $GUIX_EXTRA_ENABLED
 
 guix_extra_install_profile(){
-    guix package -m "$GUIX_EXTRA_MANIFESTS/$arg-manifest.scm" -p "$GUIX_EXTRA_PROFILES/$arg/profile"
+    arg=$1
+    [[ -d "$DOTFILES_HOME/guix-modules" ]] && addargs="-L '$DOTFILES_HOME/guix-modules'"
+    echo $addargs
+    guix package -L "$DOTFILES_HOME/guix-modules" $addargs -m "$GUIX_EXTRA_MANIFESTS/$arg-manifest.scm" -p "$GUIX_EXTRA_PROFILES/$arg/profile"
 }
 
 cmd=$1

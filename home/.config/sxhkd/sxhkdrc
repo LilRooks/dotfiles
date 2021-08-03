@@ -76,11 +76,7 @@ super + shift + Tab
     true
 
 super + {grave,Tab}
-    eval "$(xdotool getmouselocation --shell)" &&\
-    xdotool mousemove 25 25 &&\
-    bspc {node,desktop} -f last.local &&\
-    xdotool mousemove --screen $SCREEN $X $Y
-    #bspc {node,desktop} -f last.local
+    bspc {node,desktop} -f last.local
 
 # focus the older or newer node in the focus history
 super + {o,i}
@@ -90,10 +86,7 @@ super + {o,i}
 
 # focus or send to the given desktop
 super + {_,shift + }{1,2,3,4,5,6,7,8,9,0}
-    eval "$(xdotool getmouselocation --shell)" &&\
-    xdotool mousemove 25 25 &&\
-    bspc {desktop -f,node -d} '{I,II,III,IV,V,VI,VII,VIII,IX,X}' &&\
-    xdotool mousemove --screen $SCREEN $X $Y
+    bspc {desktop -f,node -d} '{I,II,III,IV,V,VI,VII,VIII,IX,X}'
 
 # power chords
 super + Escape ; {l,s,h, shift + r, shift + s, shift + e}
