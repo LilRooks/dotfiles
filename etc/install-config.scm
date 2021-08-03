@@ -6,7 +6,7 @@
              (guix download)
              (guix packages)
              (guix inferior)
-             (gnu)
+             (gnu))
 ;             (nongnu packages linux)
  ;            (nongnu system linux-initrd))
 (use-package-modules certs gl vulkan xorg xdisorg shells wm terminals linux)
