@@ -1,4 +1,6 @@
 GUIX_EXTRA="$HOME/.guix-extra"
+GUIX_PROFILE="$HOME/.guix-profile"
+[[ -f $GUIX_PROFILE/etc/profile ]] && source $GUIX_PROFILE/etc/profile
 export GUIX_EXTRA_MANIFESTS="$GUIX_EXTRA/manifests"
 export GUIX_EXTRA_PROFILES="$GUIX_EXTRA/profiles"
 export GUIX_EXTRA_ENABLED="$GUIX_EXTRA/enabled"
@@ -14,8 +16,6 @@ if [[ -d $GUIX_EXTRA_ENABLED ]] && [[ ! -n "$(find $GUIX_EXTRA_ENABLED -maxdepth
   done
 fi
 
-GUIX_PROFILE="$HOME/.guix-profile"
-[[ -f $GUIX_PROFILE/etc/profile ]] && source $GUIX_PROFILE/etc/profile
 
 fortune ~/.scripts/anti-jokes ~/.scripts/ascii-art \
 | cowthink -f ~/.scripts/blank.cow -n \
@@ -28,14 +28,6 @@ fortune ~/.scripts/anti-jokes ~/.scripts/ascii-art \
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-vewdir=/usr/bin
-[[ -d /data/data/com.termux ]] && vewdir=/data/data/com.termux/files/bin
-[[ -d $GUIX_PROFILE/bin ]] && vewdir=~/.local/bin
-
-export WORKON_HOME=~/Envs
-export VIRTUALENVWRAPPER_PYTHON=python3
-source $vewdir/virtualenvwrapper.sh
 
 source $HOME/antigen.zsh
 #antigen bundle ssh-agent
@@ -52,7 +44,7 @@ antigen apply
 bindkey -v
 bindkey '^R' history-incremental-search-backward
 
-export PATH=$PATH:~/.local/bin:~/.scripts-local:~/.scripts
+export PATH=~/.config/guix/current/bin:$PATH:~/.local/bin:~/.scripts-local:~/.scripts
 export EDITOR=vim
 alias less=$PAGER
 alias run-wine='WINEPREFIX=$PWD/.wine wine'
