@@ -1,3 +1,4 @@
 (specifications->manifest
-  '("go"
+  '("universal-ctags"
+    "go"
     "python"))
