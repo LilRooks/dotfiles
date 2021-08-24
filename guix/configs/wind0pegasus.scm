@@ -143,13 +143,13 @@
             (udev-rules-service 'steam-input-rules %steam-input-udev-rules)
             (set-xorg-configuration
               (xorg-configuration
-                (drivers '("intel"))
+                ;(drivers '("intel"))
                 (keyboard-layout keyboard-layout)
                 (extra-config '("Section \"Device\"
-                                Identifier \"device-amdgpu\"
-                                Driver \"amdgpu\"
-                                BusID \"PCI:2:0:0\"
-                                EndSection")))))
+    Identifier \"device-amdgpu\"
+    Driver \"amdgpu\"
+    BusID \"PCI:2:0:0\"
+EndSection")))))
                                 (modify-services %desktop-services
                                                  (guix-service-type config =>
                                                                     (guix-configuration
