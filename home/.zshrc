@@ -1,4 +1,6 @@
 GUIX_EXTRA="$HOME/.guix-extra"
+GUIX_PROFILE="$HOME/.guix-profile"
+[[ -f $GUIX_PROFILE/etc/profile ]] && source $GUIX_PROFILE/etc/profile
 export GUIX_EXTRA_MANIFESTS="$GUIX_EXTRA/manifests"
 export GUIX_EXTRA_PROFILES="$GUIX_EXTRA/profiles"
 export GUIX_EXTRA_ENABLED="$GUIX_EXTRA/enabled"
@@ -8,6 +10,7 @@ export DOTFILES_HOME="$(dirname $(dirname $(readlink ~/.zshrc)))"
 if [[ -d $GUIX_EXTRA_ENABLED ]] && [[ ! -n "$(find $GUIX_EXTRA_ENABLED -maxdepth 0 -empty)" ]]; then
   for i in $GUIX_EXTRA_ENABLED/*; do
     profile="$(readlink "$i")/profile"
+    echo $profile
     if [ -f "$profile"/etc/profile ]; then
       GUIX_PROFILE="$profile"
       . "$GUIX_PROFILE"/etc/profile
@@ -15,8 +18,6 @@ if [[ -d $GUIX_EXTRA_ENABLED ]] && [[ ! -n "$(find $GUIX_EXTRA_ENABLED -maxdepth
   done
 fi
 
-GUIX_PROFILE="$HOME/.guix-profile"
-[[ -f $GUIX_PROFILE/etc/profile ]] && source $GUIX_PROFILE/etc/profile
 
 fortune ~/.scripts/anti-jokes ~/.scripts/ascii-art \
 | cowthink -f ~/.scripts/blank.cow -n \
@@ -45,7 +46,11 @@ antigen apply
 bindkey -v
 bindkey '^R' history-incremental-search-backward
 
-export PATH=$PATH:~/.local/bin:~/.scripts-local:~/.scripts
+
+export GOPATH=~/go-extra/lib
+export PATH=~/.config/guix/current/bin:$PATH:$GOPATH/bin:~/.local/bin:~/.scripts-local:~/.scripts
+export GOPATH=$GOPATH:~/go-extra/code
+
 export EDITOR=vim
 alias less=$PAGER
 alias run-wine='WINEPREFIX=$PWD/.wine wine'

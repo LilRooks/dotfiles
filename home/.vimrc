@@ -81,6 +81,7 @@ Plugin 'matchit.zip'
 Plugin 'yggdroot/indentline'
 Plugin 'ajh17/vimcompletesme'
 Plugin '907th/vim-auto-save'
+Plugin 'fatih/vim-go'
 " --- Git Sh!t ---
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
@@ -149,6 +150,7 @@ augroup END
 
 let g:syntastic_racket_code_ayatollah_script = "/home/zant/.scripts-local/code-ayatollah.rkt"
 let g:syntastic_racket_checkers = ['code_ayatollah']
+let g:syntastic_go_checkers = ['golint']
 
 " --- xolox/vim-easytags settings ---
 " Where to look for tags files
@@ -186,5 +188,7 @@ augroup END
 let g:vim_markdown_folding_disabled = 1
 
 " --- vim-auto-save
-let g:auto_save_events = ["CursorHold","CursorHoldI"]
-set updatetime=1000
+let g:auto_save_events = ["InsertLeave", "TextChanged"]
+
+" --- deopletele
+let g:deoplete#enable_at_startup = 1

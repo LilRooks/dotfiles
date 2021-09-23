@@ -7,9 +7,9 @@
 
 guix_extra_install_profile(){
     arg=$1
-    [[ -d "$DOTFILES_HOME/guix-modules" ]] && addargs="-L '$DOTFILES_HOME/guix-modules'"
+    [[ -d "$DOTFILES_HOME/guix-modules" ]] && addargs="-L '$DOTFILES_HOME/guix/modules'"
     echo $addargs
-    guix package -L "$DOTFILES_HOME/guix-modules" $addargs -m "$GUIX_EXTRA_MANIFESTS/$arg-manifest.scm" -p "$GUIX_EXTRA_PROFILES/$arg/profile"
+    guix package -L "$DOTFILES_HOME/guix/modules" $addargs -m "$GUIX_EXTRA_MANIFESTS/$arg-manifest.scm" -p "$GUIX_EXTRA_PROFILES/$arg/profile"
 }
 
 cmd=$1
@@ -18,11 +18,11 @@ case $cmd in
     upgrade)
         if [[ -n "$arg" ]] && [[ -d "$GUIX_EXTRA_PROFILES/$arg" ]]; then
             echo "upgrading $arg"
-            guix package --manifest="$GUIX_EXTRA_MANIFESTS/$arg-manifest.scm" --profile="$GUIX_EXTRA_PROFILES/$arg/profile"
+            guix_extra_install_profile $arg
         else
             echo "unknown or no arg, upgrading all enabled"
             for profile in "$GUIX_EXTRA_ENABLED"/*; do
-                guix package --profile="$profile/profile" --manifest="$GUIX_EXTRA_MANIFESTS/$(basename $profile)-manifest.scm"
+                guix_extra_install_profile "$(basename $profile)"
             done
         fi
         ;;
