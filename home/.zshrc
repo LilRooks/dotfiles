@@ -2,6 +2,7 @@ GUIX_EXTRA="$HOME/.guix-extra"
 export GUIX_EXTRA_MANIFESTS="$GUIX_EXTRA/manifests"
 export GUIX_EXTRA_PROFILES="$GUIX_EXTRA/profiles"
 export GUIX_EXTRA_ENABLED="$GUIX_EXTRA/enabled"
+export GUIX_LOCPATH="$GUIX_EXTRA_PROFILES/foreign/lib/locale"
 export DOTFILES_HOME="$(dirname $(dirname $(readlink ~/.zshrc)))"
 
 if [[ -d $GUIX_EXTRA_ENABLED ]] && [[ ! -n "$(find $GUIX_EXTRA_ENABLED -maxdepth 0 -empty)" ]]; then
@@ -28,14 +29,6 @@ fortune ~/.scripts/anti-jokes ~/.scripts/ascii-art \
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-vewdir=/usr/bin
-[[ -d /data/data/com.termux ]] && vewdir=/data/data/com.termux/files/bin
-[[ -d $GUIX_PROFILE/bin ]] && vewdir=~/.local/bin
-
-export WORKON_HOME=~/Envs
-export VIRTUALENVWRAPPER_PYTHON=python3
-source $vewdir/virtualenvwrapper.sh
 
 source $HOME/antigen.zsh
 #antigen bundle ssh-agent
