@@ -82,6 +82,7 @@ Plugin 'yggdroot/indentline'
 Plugin 'ajh17/vimcompletesme'
 Plugin '907th/vim-auto-save'
 Plugin 'fatih/vim-go'
+Plugin 'kmonad/kmonad-vim'
 " --- Git Sh!t ---
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
