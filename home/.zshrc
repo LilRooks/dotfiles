@@ -4,6 +4,7 @@ GUIX_PROFILE="$HOME/.guix-profile"
 export GUIX_EXTRA_MANIFESTS="$GUIX_EXTRA/manifests"
 export GUIX_EXTRA_PROFILES="$GUIX_EXTRA/profiles"
 export GUIX_EXTRA_ENABLED="$GUIX_EXTRA/enabled"
+export GUIX_LOCPATH="$GUIX_EXTRA_PROFILES/foreign/lib/locale"
 export DOTFILES_HOME="$(dirname $(dirname $(readlink ~/.zshrc)))"
 
 if [[ -d $GUIX_EXTRA_ENABLED ]] && [[ ! -n "$(find $GUIX_EXTRA_ENABLED -maxdepth 0 -empty)" ]]; then
