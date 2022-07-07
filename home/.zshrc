@@ -1,27 +1,8 @@
-GUIX_EXTRA="$HOME/.guix-extra"
-GUIX_PROFILE="$HOME/.guix-profile"
-[[ -f $GUIX_PROFILE/etc/profile ]] && source $GUIX_PROFILE/etc/profile
-export GUIX_EXTRA_MANIFESTS="$GUIX_EXTRA/manifests"
-export GUIX_EXTRA_PROFILES="$GUIX_EXTRA/profiles"
-export GUIX_EXTRA_ENABLED="$GUIX_EXTRA/enabled"
-export GUIX_LOCPATH="$GUIX_EXTRA_PROFILES/foreign/lib/locale"
 export DOTFILES_HOME="$(dirname $(dirname $(readlink ~/.zshrc)))"
 
-if [[ -d $GUIX_EXTRA_ENABLED ]] && [[ ! -n "$(find $GUIX_EXTRA_ENABLED -maxdepth 0 -empty)" ]]; then
-  for i in $GUIX_EXTRA_ENABLED/*; do
-    profile="$(readlink "$i")/profile"
-    echo $profile
-    if [ -f "$profile"/etc/profile ]; then
-      GUIX_PROFILE="$profile"
-      . "$GUIX_PROFILE"/etc/profile
-    fi
-  done
-fi
-
-
-fortune ~/.scripts/anti-jokes ~/.scripts/ascii-art \
+cat /etc/os-release \
 | cowthink -f ~/.scripts/blank.cow -n \
-| lolcat
+| lolcat || cat /etc/os-release
 ~/.scripts/glace
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -54,6 +35,7 @@ export GOPATH=$GOPATH:~/go-extra/code
 export EDITOR=vim
 alias less=$PAGER
 alias run-wine='WINEPREFIX=$PWD/.wine wine'
+alias run-wine32='WINEARCH=win32 WINEPREFIX=$PWD/.wine32 wine'
 
 AUTO_LS_COMMANDS=(ls)
 #export HISTFILE=$HOME/.zsh_history

@@ -54,39 +54,36 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " --- Make Vim look good ---
-Plugin 'tomasr/molokai'
-Plugin 'arcticicestudio/nord-vim'
 Plugin 'lifepillar/gruvbox8'
-Plugin 'sheerun/vim-polyglot'
 Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'kjwon15/vim-transparent'
 " --- Vim as a programmer's text editor ---
-Plugin 'wlangstroth/vim-racket'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'vim-syntastic/syntastic'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 Plugin 'majutsushi/tagbar'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'vim-scripts/a.vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'itchyny/vim-haskell-indent'
-Plugin 'matchit.zip'
 Plugin 'yggdroot/indentline'
-Plugin 'ajh17/vimcompletesme'
 Plugin '907th/vim-auto-save'
-Plugin 'fatih/vim-go'
 Plugin 'kmonad/kmonad-vim'
 " --- Git Sh!t ---
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
+" --- Lumpy Space Princess Stuff ---
+Plugin 'prabirshrestha/vim-lsp'
+Plugin 'mattn/vim-lsp-settings'
+Plugin 'prabirshrestha/asyncomplete.vim'
+Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 
+"Plugin 'ajh17/vimcompletesme'
+"Plugin 'vim-syntastic/syntastic'
+"Plugin 'plasticboy/vim-markdown'
+"Plugin 'fatih/vim-go'
 call vundle#end()
 
 filetype plugin indent on
@@ -129,7 +126,7 @@ endif
 " Open/close NERDTree Tabs with \t
 nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
 " To have NERDTree always open on startup
-"let g:nerdtree_tabs_open_on_console_startup = 1
+let g:nerdtree_tabs_open_on_console_startup = 1
 
 
 " --- scrooloose/syntastic settings ---
@@ -149,10 +146,6 @@ augroup mySyntastic
     au FileType tex let b:syntastic_mode = "passive"
 augroup END
 
-let g:syntastic_racket_code_ayatollah_script = "/home/zant/.scripts-local/code-ayatollah.rkt"
-let g:syntastic_racket_checkers = ['code_ayatollah']
-let g:syntastic_go_checkers = ['golint']
-
 " --- xolox/vim-easytags settings ---
 " Where to look for tags files
 set tags=./tags;,~/.vimtags
@@ -168,7 +161,7 @@ let g:easytags_suppress_ctags_warning = 1
 " Open/close tagbar with \b
 nmap <silent> <leader>b :TagbarToggle<CR>
 " Uncomment to open tagbar automatically whenever possible
-"autocmd BufEnter * nested :call tagbar#autoopen(0)
+autocmd BufEnter * nested :call tagbar#autoopen(0)
 
 
 " --- airblade/vim-gitgutter settings ---
@@ -191,5 +184,7 @@ let g:vim_markdown_folding_disabled = 1
 " --- vim-auto-save
 let g:auto_save_events = ["InsertLeave", "TextChanged"]
 
-" --- deopletele
-let g:deoplete#enable_at_startup = 1
+" --- Lumpy Space Princess Settings
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
